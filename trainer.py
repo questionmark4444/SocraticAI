@@ -81,9 +81,9 @@ class Head(nn.Module):
 
     def __init__(self):
         super().__init__()
-        self.key = nn.Linear(n_embd, head_size, bias=False)
-        self.query = nn.Linear(n_embd, head_size, bias=False)
-        self.value = nn.Linear(n_embd, head_size, bias=False)
+        self.keys = nn.Linear(n_embd, head_size, bias=False)
+        self.queries = nn.Linear(n_embd, head_size, bias=False)
+        self.values = nn.Linear(n_embd, head_size, bias=False)
         self.register_buffer('tril', torch.tril(torch.ones(block_size, block_size)))
 
         self.dropout = nn.Dropout(dropout)
@@ -91,17 +91,17 @@ class Head(nn.Module):
     def forward(self, x):
         # input of size (batch, time-step, channels)
         # output of size (batch, time-step, head size)
-        k = self.key(x)   # (B,T,hs)
-        q = self.query(x) # (B,T,hs)
+        key = self.keys(x)   # (B,T,hs)
+        query = self.queries(x) # (B,T,hs)
         # compute attention scores ("affinities")
-        wei = q @ k.transpose(-2,-1) * head_size**-0.5 # (B, T, hs) @ (B, hs, T) -> (B, T, T)
-        wei = wei.masked_fill(self.tril[:block_size, :block_size] == 0, float('-inf')) # (B, T, T)
-        wei = F.softmax(wei, dim=-1) # (B, T, T)
-        wei = self.dropout(wei)
+        weight = query @ key.transpose(-2,-1) * head_size**-0.5 # (B, T, hs) @ (B, hs, T) -> (B, T, T)
+        weight = weight.masked_fill(self.tril[:block_size, :block_size] == 0, float('-inf')) # (B, T, T)
+        weight = F.softmax(weight, dim=-1) # (B, T, T)
+        weight = self.dropout(weight)
         # perform the weighted aggregation of the values
-        v = self.value(x) # (B,T,hs)
-        out = wei @ v # (B, T, T) @ (B, T, hs) -> (B, T, hs)
-        return out
+        value = self.values(x) # (B,T,hs)
+        output = weight @ value # (B, T, T) @ (B, T, hs) -> (B, T, hs)
+        return output
 
 class MultiHeadAttention(nn.Module):
     """ multiple heads of self-attention in parallel """
@@ -109,28 +109,13 @@ class MultiHeadAttention(nn.Module):
     def __init__(self):
         super().__init__()
         self.heads = nn.ModuleList([Head() for _ in range(n_head)])
-        self.proj = nn.Linear(n_embd, n_embd)
+        self.project = nn.Linear(n_embd, n_embd)
         self.dropout = nn.Dropout(dropout)
 
     def forward(self, x):
         out = torch.cat([h(x) for h in self.heads], dim=-1)
-        out = self.dropout(self.proj(out))
+        out = self.dropout(self.project(out))
         return out
-
-class FeedFoward(nn.Module):
-    """ a simple linear layer followed by a non-linearity """
-
-    def __init__(self):
-        super().__init__()
-        self.net = nn.Sequential(
-            nn.Linear(n_embd, 4 * n_embd),
-            nn.ReLU(),
-            nn.Linear(4 * n_embd, n_embd),
-            nn.Dropout(dropout),
-        )
-
-    def forward(self, x):
-        return self.net(x)
 
 class Block(nn.Module):
     """ Transformer block: communication followed by computation """
@@ -138,14 +123,19 @@ class Block(nn.Module):
     def __init__(self):
         # n_embd: embedding dimension, n_head: the number of heads we'd like
         super().__init__()
-        self.sa = MultiHeadAttention()
-        self.ffwd = FeedFoward()
-        self.ln1 = nn.LayerNorm(n_embd)
-        self.ln2 = nn.LayerNorm(n_embd)
+        self.SelfAttention = MultiHeadAttention()
+        self.FeedFoward = nn.Sequential( # a simple linear layer followed by a non-linearity
+            nn.Linear(n_embd, 4 * n_embd),
+            nn.ReLU(),
+            nn.Linear(4 * n_embd, n_embd),
+            nn.Dropout(dropout),
+        )
+        self.LayeNormal1 = nn.LayerNorm(n_embd)
+        self.LayeNormal2 = nn.LayerNorm(n_embd)
 
     def forward(self, x):
-        x = x + self.sa(self.ln1(x))
-        x = x + self.ffwd(self.ln2(x))
+        x = x + self.SelfAttention(self.LayeNormal1(x))
+        x = x + self.FeedFoward(self.LayeNormal2(x))
         return x
 
 class GPTLanguageModel(nn.Module):
@@ -156,7 +146,7 @@ class GPTLanguageModel(nn.Module):
         self.token_embedding_table = nn.Embedding(vocab_size, n_embd)
         self.position_embedding_table = nn.Embedding(block_size, n_embd)
         self.blocks = nn.Sequential(*[Block() for _ in range(n_layer)])
-        self.ln_f = nn.LayerNorm(n_embd) # final layer norm
+        self.FinalLayerNormal = nn.LayerNorm(n_embd) # final layer norm
         self.lm_head = nn.Linear(n_embd, vocab_size)
 
         # better init, not covered in the original GPT video, but important, will cover in followup video
@@ -172,11 +162,11 @@ class GPTLanguageModel(nn.Module):
 
     def forward(self, idx):
         # idx and targets are both (B,T) tensor of integers
-        tok_emb = self.token_embedding_table(idx) # (B,T,C)
-        pos_emb = self.position_embedding_table(torch.arange(block_size, device=device)) # (T,C)
-        x = tok_emb + pos_emb # (B,T,C)
+        token_embed = self.token_embedding_table(idx) # (B,T,C)
+        position_embed = self.position_embedding_table(torch.arange(block_size, device=device)) # (T,C)
+        x = token_embed + position_embed # (B,T,C)
         x = self.blocks(x) # (B,T,C)
-        x = self.ln_f(x) # (B,T,C)
+        x = self.FinalLayerNormal(x) # (B,T,C)
         logits = self.lm_head(x) # (B,T,vocab_size)
 
         return logits
@@ -187,9 +177,8 @@ class GPTLanguageModel(nn.Module):
 
         logits = self(idx)
 
-        B, T, C = logits.shape
-        logits = logits.view(B*T, C)
-        targets = targets.view(B*T)
+        logits = logits.view(batch_size * block_size, vocab_size)
+        targets = targets.view(batch_size * block_size)
         loss = F.cross_entropy(logits, targets)
 
         return logits, loss
