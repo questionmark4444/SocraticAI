@@ -24,15 +24,18 @@ with open('input.txt', 'r', encoding='utf-8') as f:
     text = f.read().lower()
 
 # here are all the unique characters that occur in this text and common words
+words = [
+    'question: "',
+    'what',
+    '?"\nanswer: "i don\'t know',
+    'could',
+    'you',
+    'explain',
+    'the',
+    'concept'
+]
 chars = sorted(list(set(text)))
-chars.append('question: "')
-chars.append('what')
-chars.append('?"\nanswer: "i don\'t know')
-chars.append('could')
-chars.append('you')
-chars.append('explain')
-chars.append('the')
-chars.append('concept')
+chars += words
 
 vocab_size = len(chars)
 # create a mapping from characters to integers
@@ -44,31 +47,14 @@ def encode(s):
     encoding = []
     c = 0
     while c < len(s):
-        if s[c:c+len('question: "')] == 'question: "':
-            encoding.append(char_to_int['question: "'])
-            c += len('question: "')
-        elif s[c:c+len('what')] == 'what':
-            encoding.append(char_to_int['what'])
-            c += len('what')
-        elif s[c:c+len('?"\nanswer: "i don\'t know')] == '?"\nanswer: "i don\'t know':
-            encoding.append(char_to_int['?"\nanswer: "i don\'t know'])
-            c += len('?"\nanswer: "i don\'t know')
-        elif s[c:c+len('could')] == 'could':
-            encoding.append(char_to_int['could'])
-            c += len('could')
-        elif s[c:c+len('you')] == 'you':
-            encoding.append(char_to_int['you'])
-            c += len('you')
-        elif s[c:c+len('explain')] == 'explain':
-            encoding.append(char_to_int['explain'])
-            c += len('explain')
-        elif s[c:c+len('the')] == 'the':
-            encoding.append(char_to_int['the'])
-            c += len('the')
-        elif s[c:c+len('concept')] == 'concept':
-            encoding.append(char_to_int['concept'])
-            c += len('concept')
-        else:
+        word_index = 0
+        while word_index < len(words):
+            if s[c:c+len(words[word_index])] == words[word_index]:
+                encoding.append(char_to_int[words[word_index]])
+                c += len(words[word_index])
+                break
+            word_index += 1
+        if word_index == len(words):
             encoding.append(char_to_int[s[c]])
             c += 1
     return encoding
