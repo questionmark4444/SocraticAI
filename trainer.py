@@ -22,17 +22,18 @@ torch.manual_seed(1337)
 
 with open('input.txt', 'r', encoding='utf-8') as f:
     text = f.read().lower()
-    text = text.replace('question: "', '❔')
-    text = text.replace('what', '¿')
-    text = text.replace('?"\nanswer: "i don\'t know', '❓')
-    text = text.replace('could', '﹖')
-    text = text.replace('you', 'ᐣ')
-    text = text.replace('explain', '�')
-    text = text.replace('the', '‽')
-    text = text.replace('concept', '？')
 
-# here are all the unique characters that occur in this text
+# here are all the unique characters that occur in this text and common words
 chars = sorted(list(set(text)))
+chars.append('question: "')
+chars.append('what')
+chars.append('?"\nanswer: "i don\'t know')
+chars.append('could')
+chars.append('you')
+chars.append('explain')
+chars.append('the')
+chars.append('concept')
+
 vocab_size = len(chars)
 # create a mapping from characters to integers
 char_to_int = { ch:i for i,ch in enumerate(chars) }
@@ -40,19 +41,41 @@ int_to_char = { i:ch for i,ch in enumerate(chars) }
 
 def encode(s):
     # encoder: take a string, output a list of integers
-    return [char_to_int[c] for c in s]
+    encoding = []
+    c = 0
+    while c < len(s):
+        if s[c:c+len('question: "')] == 'question: "':
+            encoding.append(char_to_int['question: "'])
+            c += len('question: "')
+        elif s[c:c+len('what')] == 'what':
+            encoding.append(char_to_int['what'])
+            c += len('what')
+        elif s[c:c+len('?"\nanswer: "i don\'t know')] == '?"\nanswer: "i don\'t know':
+            encoding.append(char_to_int['?"\nanswer: "i don\'t know'])
+            c += len('?"\nanswer: "i don\'t know')
+        elif s[c:c+len('could')] == 'could':
+            encoding.append(char_to_int['could'])
+            c += len('could')
+        elif s[c:c+len('you')] == 'you':
+            encoding.append(char_to_int['you'])
+            c += len('you')
+        elif s[c:c+len('explain')] == 'explain':
+            encoding.append(char_to_int['explain'])
+            c += len('explain')
+        elif s[c:c+len('the')] == 'the':
+            encoding.append(char_to_int['the'])
+            c += len('the')
+        elif s[c:c+len('concept')] == 'concept':
+            encoding.append(char_to_int['concept'])
+            c += len('concept')
+        else:
+            encoding.append(char_to_int[s[c]])
+            c += 1
+    return encoding
 
 def decode(l):
     # decoder: take a list of integers, output a string
     decoded = ''.join([int_to_char[i] for i in l])
-    decoded = decoded.replace('❔', 'question: "')
-    decoded = decoded.replace('¿', 'what')
-    decoded = decoded.replace('❓', '?"\nanswer: "i don\'t know')
-    decoded = decoded.replace('﹖', 'could')
-    decoded = decoded.replace('ᐣ', 'you')
-    decoded = decoded.replace('�', 'explain')
-    decoded = decoded.replace('‽', 'the')
-    decoded = decoded.replace('？', 'concept')
     return decoded
 
 # Training data
@@ -234,7 +257,7 @@ for iter in range(max_iters):
     optimizer.step()
 
 # generate from the model
-question = encode("\n❔why does death exist❓")
+question = encode('\nquestion: "why does death exist?"\nanswer: "i don\'t know')
 context = torch.zeros((1, len(question)), dtype=torch.long, device='cpu')
 for x in range(len(question)):
     context[0][x] = question[x]
