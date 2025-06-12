@@ -23,7 +23,13 @@ torch.manual_seed(1337)
 with open('input.txt', 'r', encoding='utf-8') as f:
     text = f.read().lower()
     text = text.replace('question: "', '❔')
+    text = text.replace('what', '¿')
     text = text.replace('?"\nanswer: "i don\'t know', '❓')
+    text = text.replace('could', '﹖')
+    text = text.replace('you', 'ᐣ')
+    text = text.replace('explain', '�')
+    text = text.replace('the', '‽')
+    text = text.replace('concept', '？')
 
 # here are all the unique characters that occur in this text
 chars = sorted(list(set(text)))
@@ -40,7 +46,13 @@ def decode(l):
     # decoder: take a list of integers, output a string
     decoded = ''.join([int_to_char[i] for i in l])
     decoded = decoded.replace('❔', 'question: "')
+    decoded = decoded.replace('¿', 'what')
     decoded = decoded.replace('❓', '?"\nanswer: "i don\'t know')
+    decoded = decoded.replace('﹖', 'could')
+    decoded = decoded.replace('ᐣ', 'you')
+    decoded = decoded.replace('�', 'explain')
+    decoded = decoded.replace('‽', 'the')
+    decoded = decoded.replace('？', 'concept')
     return decoded
 
 # Training data
@@ -226,6 +238,6 @@ question = encode("\n❔why does death exist❓")
 context = torch.zeros((1, len(question)), dtype=torch.long, device='cpu')
 for x in range(len(question)):
     context[0][x] = question[x]
-e = model.generate(context, max_new_tokens=50)
+e = model.generate(context, max_new_tokens=25)
 for t in e :
     print(decode(t.tolist()))
