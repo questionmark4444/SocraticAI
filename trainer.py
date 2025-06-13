@@ -5,9 +5,9 @@ import pickle
 
 # hyperparameters
 batch_size = 64 # how many independent sequences will we process in parallel?
-block_size = 8 # what is the maximum context length for predictions?
-max_iters = 5000
-eval_interval = 500
+block_size = 32 # what is the maximum context length for predictions?
+max_iters = 2000
+eval_interval = 200
 learning_rate = 3e-4
 device = 'cpu'
 eval_iters = 200
@@ -243,7 +243,9 @@ for iter in range(max_iters):
     optimizer.step()
 
 # generate from the model
-question = encode('\nquestion: "why does death exist?"\nanswer: "i don\'t know')
+question = encode('question: "why does death exist?"\nanswer: "i don\'t know')
+while len(question) < block_size:
+    question.insert(0, encode('\n')[0])
 context = torch.zeros((1, len(question)), dtype=torch.long, device='cpu')
 for x in range(len(question)):
     context[0][x] = question[x]
