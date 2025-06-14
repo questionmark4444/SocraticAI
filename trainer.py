@@ -27,12 +27,17 @@ with open('input.txt', 'r', encoding='utf-8') as f:
 words = [
     'question: "',
     'what',
+    'why',
+    'where',
+    'how',
+    'should',
     '?"\nanswer: "i don\'t know',
     'could',
     'you',
     'explain',
     'the',
-    'concept'
+    'concept',
+    'of'
 ]
 chars = sorted(list(set(text)))
 chars += words
