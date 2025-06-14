@@ -77,8 +77,13 @@ def get_batch():
     x_data = []
     y_data = []
     for i in ix:
-        x_data.append(train_data[i:i+block_size])
-        y_data.append(train_data[i+1:i+block_size+1])
+        j = 0
+        while decode([train_data[i+j+1].tolist()]) == "\n":
+            j += 1
+        while decode([train_data[i+j+block_size].tolist()]) == "\n":
+            j -= 1
+        x_data.append(train_data[i+j:i+j+block_size])
+        y_data.append(train_data[i+j+1:i+j+block_size+1])
     x = torch.stack(x_data)
     x.to(device)
     y = torch.stack(y_data)
@@ -132,9 +137,11 @@ class MultiHeadAttention(nn.Module):
         self.heads = nn.ModuleList([Head() for _ in range(n_head)])
         self.project = nn.Linear(n_embd, n_embd)
         self.dropout = nn.Dropout(dropout)
+        self.LayerNormal = nn.LayerNorm(n_embd)
 
     def forward(self, x):
-        out = torch.cat([h(x) for h in self.heads], dim=-1)
+        out = self.LayerNormal(x)
+        out = torch.cat([h(out) for h in self.heads], dim=-1)
         out = self.dropout(self.project(out))
         return out
 
@@ -145,18 +152,17 @@ class Block(nn.Module):
         # n_embd: embedding dimension, n_head: the number of heads we'd like
         super().__init__()
         self.SelfAttention = MultiHeadAttention()
-        self.FeedFoward = nn.Sequential( # a simple linear layer followed by a non-linearity
+        self.FeedFoward = nn.Sequential(
+            nn.LayerNorm(n_embd),
             nn.Linear(n_embd, 4 * n_embd),
             nn.ReLU(),
             nn.Linear(4 * n_embd, n_embd),
             nn.Dropout(dropout),
         )
-        self.LayeNormal1 = nn.LayerNorm(n_embd)
-        self.LayeNormal2 = nn.LayerNorm(n_embd)
 
     def forward(self, x):
-        x = x + self.SelfAttention(self.LayeNormal1(x))
-        x = x + self.FeedFoward(self.LayeNormal2(x))
+        x = x + self.SelfAttention(x)
+        x = x + self.FeedFoward(x)
         return x
 
 class GPTLanguageModel(nn.Module):
