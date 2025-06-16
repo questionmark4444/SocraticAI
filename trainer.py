@@ -5,9 +5,9 @@ import pickle
 
 # hyperparameters
 batch_size = 64 # how many independent sequences will we process in parallel?
-block_size = 32 # what is the maximum context length for predictions?
-max_iters = 2000
-eval_interval = 200
+block_size = 128 # what is the maximum context length for predictions?
+max_iters = 1000
+eval_interval = 100
 learning_rate = 3e-4
 device = 'cpu'
 eval_iters = 200
@@ -83,10 +83,6 @@ def get_batch():
     y_data = []
     for i in ix:
         j = 0
-        while decode([train_data[i+j+1].tolist()]) == "\n":
-            j += 1
-        while decode([train_data[i+j+block_size].tolist()]) == "\n":
-            j -= 1
         x_data.append(train_data[i+j:i+j+block_size])
         y_data.append(train_data[i+j+1:i+j+block_size+1])
     x = torch.stack(x_data)
