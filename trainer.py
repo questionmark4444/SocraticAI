@@ -18,6 +18,9 @@ dropout = 0.2
 # ------------
 head_size = n_embd // n_head
 
+# set mode
+mode = "training"
+
 torch.manual_seed(1337)
 
 with open('input.txt', 'r', encoding='utf-8') as f:
@@ -228,34 +231,50 @@ class GPTLanguageModel(nn.Module):
             idx = torch.cat((idx, idx_next), dim=1) # (B, T+1)
         return idx
 
-model = GPTLanguageModel()
-model.to(device)
-# print the number of parameters in the model
-print(sum(p.numel() for p in model.parameters())/1e6, 'M parameters')
+if mode == "training":
+    model = GPTLanguageModel()
+    model.to(device)
+    # print the number of parameters in the model
+    print(sum(p.numel() for p in model.parameters())/1e6, 'M parameters')
 
-# create a PyTorch optimizer
-optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
+    # create a PyTorch optimizer
+    optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
 
-for iter in range(max_iters):
+    for iter in range(max_iters):
 
-    # every once in a while evaluate the loss on train and val sets
-    if iter % eval_interval == 0 or iter == max_iters - 1:
-        losses = estimate_loss()
-        print(f"step {iter}: loss {losses:.4f}")
+        # every once in a while evaluate the loss on train and val sets
+        if iter % eval_interval == 0 or iter == max_iters - 1:
+            losses = estimate_loss()
+            print(f"step {iter}: loss {losses:.4f}")
 
-    # evaluate the loss
-    logits, loss = model.batch()
-    optimizer.zero_grad(set_to_none=True)
-    loss.backward()
-    optimizer.step()
+        # evaluate the loss
+        logits, loss = model.batch()
+        optimizer.zero_grad(set_to_none=True)
+        loss.backward()
+        optimizer.step()
 
-# generate from the model
-question = encode('question: "why does death exist?"\nanswer: "i don\'t know')
-while len(question) < block_size:
-    question.insert(0, encode('\n')[0])
-context = torch.zeros((1, len(question)), dtype=torch.long, device='cpu')
-for x in range(len(question)):
-    context[0][x] = question[x]
-e = model.generate(context, max_new_tokens=25)
-for t in e :
-    print(decode(t.tolist()))
+    # save model
+    with open('model.pkl', 'wb') as f:
+        pickle.dump(model, f)
+else:
+    # load model
+    with open('model.pkl', 'rb') as f:
+        model = pickle.load(f)
+    model.to(device)
+
+    # print the number of parameters in the model
+    print(sum(p.numel() for p in model.parameters())/1e6, 'M parameters')
+
+    # input question from user
+    inputed = input('question: ').lower()
+    question = encode(f'question: "{inputed}"\nanswer: "i don\'t know')
+    while len(question) < block_size:
+        question.insert(0, encode('\n')[0])
+
+    # generate from the model
+    context = torch.zeros((1, len(question)), dtype=torch.long, device='cpu')
+    for x in range(len(question)):
+        context[0][x] = question[x]
+    e = model.generate(context, max_new_tokens=25)
+    for t in e :
+        print(decode(t.tolist()))
