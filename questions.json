@@ -770,7 +770,7 @@
     "I don't know, could you explain the concept of morality?",
 
     5,
-    "Is stealing ever permissible? ",
+    "Is stealing ever permissible?",
     "I'm not sure, what kind of things do you think should be permissible?",
     "I don't know, could you explain what things should be permissible?",
 
@@ -1159,11 +1159,6 @@
     "I'm not sure, what do you think fair is?",
     "I don't know, could you explain the concept of fair?",
 
-    3,
-    "What is time?",
-    "I'm not sure",
-    "I don't know",
-
     4,
     "What makes you... you?",
     "I'm not sure, what do you think?",
@@ -1500,7 +1495,7 @@
     "I don't know, could you explain the concept of a brain?",
 
     3,
-    "What are numbers? ",
+    "What are numbers?",
     "I'm not sure",
     "I don't know",
 
@@ -1542,5 +1537,720 @@
     1,
     "Could there be a parallel universe?",
     "I'm not sure, what do you think a universe is?",
-    "I don't know, could you explain the concept of a universe?"
+    "I don't know, could you explain the concept of a universe?",
+
+    2,
+    "Is happiness just chemicals flowing through your brain or something more?",
+    "I'm not sure, what do you think happiness is?",
+    "I don't know, could you explain the concept of happiness?",
+
+    2,
+    "Can we really know everything?",
+    "I'm not sure, what do you think everything is?",
+    "I don't know, could you explain the concept of everything?",
+
+    2,
+    "What is the meaning of a good life?",
+    "I'm not sure, what do you think meaning is?",
+    "I don't know, could you explain the concept of meaning?",
+
+    2,
+    "Is there a God?",
+    "I'm not sure, what do you think god is?",
+    "I don't know, could you explain the concept of god?",
+
+    2,
+    "What in life is truly objective and not subjective?",
+    "I'm not sure, what do you think objectivity is?",
+    "I don't know, could you explain the concept of objectivity?",
+
+    2,
+    "Is there inherent order in nature or is it all chaos and chance?",
+    "I'm not sure, what do you think order is?",
+    "I don't know, could you explain the concept of order?",
+
+    2,
+    "Is there an alternative to capitalism?",
+    "I'm not sure, what do you think capitalism is?",
+    "I don't know, could you explain the concept of capitalism?",
+
+    2,
+    "Is it more important to be respected or liked?",
+    "I'm not sure, what do you think respect is?",
+    "I don't know, could you explain the concept of respect?",
+
+    7,
+    "Are we in the Matrix?",
+    "I'm not sure, what do you think the Matrix is?",
+    "I don't know, could you explain the concept of the Matrix?",
+
+    2,
+    "Have we become less happy in this age of technology?",
+    "I'm not sure, what do you think happiness is?",
+    "I don't know, could you explain the concept of happiness?",
+
+    3,
+    "What is mathematics?",
+    "I'm not sure",
+    "I don't know",
+
+    1,
+    "Are humans obligated to better themselves?",
+    "I'm not sure, what do you think a human is?",
+    "I don't know, could you explain the concept of a human?",
+
+    2,
+    "Is there a meaning to life?",
+    "I'm not sure, what do you think meaning is?",
+    "I don't know, could you explain the concept of meaning?",
+
+    1,
+    "Is having a big ego a negative or positive trait?",
+    "I'm not sure, what do you think a ego is?",
+    "I don't know, could you explain the concept of a ego?",
+
+    2,
+    "Is there absolute mortality?",
+    "I'm not sure, what do you think mortality is?",
+    "I don't know, could you explain the concept of mortality?",
+
+    2,
+    "Is the most important purpose in life to find happiness?",
+    "I'm not sure, what do you think happiness is?",
+    "I don't know, could you explain the concept of happiness?",
+
+    2,
+    "Do we have free will?",
+    "I'm not sure, what do you think free-will is?",
+    "I don't know, could you explain the concept of free-will?",
+
+    2,
+    "Does life require a purpose and goal?",
+    "I'm not sure, what do you think life is?",
+    "I don't know, could you explain the concept of life?",
+
+    2,
+    "Would you kill 10 people to save 100?",
+    "I'm not sure, what do you think killing is?",
+    "I don't know, could you explain the concept of killing?",
+
+    3,
+    "What is happiness?",
+    "I'm not sure",
+    "I don't know",
+
+    2,
+    "How can people believe in truths without evidence?",
+    "I'm not sure, what do you think truth is?",
+    "I don't know, could you explain the concept of truth?",
+
+    2,
+    "Is it easier to love or to be loved?",
+    "I'm not sure, what do you think love is?",
+    "I don't know, could you explain the concept of love?",
+
+    1,
+    "Do acts of kindness have a motive?",
+    "I'm not sure, what do you think a motive is?",
+    "I don't know, could you explain the concept of a motive?",
+
+    2,
+    "Is mind or matter more real?",
+    "I'm not sure, what do you think matter is?",
+    "I don't know, could you explain the concept of matter?",
+
+    2,
+    "Is love simply a physical desire or something more?",
+    "I'm not sure, what do you think love is?",
+    "I don't know, could you explain the concept of love?",
+
+    1,
+    "Where do thoughts come from?",
+    "I'm not sure, what do you think a thought is?",
+    "I don't know, could you explain the concept of a thought?",
+
+    2,
+    "Does evil come from within? If so, why?",
+    "I'm not sure, what do you think evil is?",
+    "I don't know, could you explain the concept of evil?",
+
+    2,
+    "Are people in this current generation less or more sensitive than people from past generations?",
+    "I'm not sure, what do you think sensitivity is?",
+    "I don't know, could you explain the concept of sensitivity?",
+
+    1,
+    "Where were people before they were born?",
+    "I'm not sure, what do you think a person is?",
+    "I don't know, could you explain the concept of a person?",
+
+    2,
+    "What is true friendship?",
+    "I'm not sure, what do you think truth is?",
+    "I don't know, could you explain the concept of truth?",
+
+    2,
+    "How does gravity work?",
+    "I'm not sure, what do you think gravity is?",
+    "I don't know, could you explain the concept of gravity?",
+
+    2,
+    "Can achieving nothing make a person happy?",
+    "I'm not sure, what do you think happiness is?",
+    "I don't know, could you explain the concept of happiness?",
+
+    2,
+    "Does the Law of Attraction exist?",
+    "I'm not sure, what do you think existence is?",
+    "I don't know, could you explain the concept of existence?",
+
+    8,
+    "Have gadgets and apps taken away emotions?",
+    "I'm not sure, what do you think emotions are?",
+    "I don't know, could you explain what emotions are?",
+
+    2,
+    "Does observation alter an event?",
+    "I'm not sure, what do you think observation is?",
+    "I don't know, could you explain the concept of observation?",
+
+    7,
+    "If everyone spoke their mind, would this world be a better place?",
+    "I'm not sure, what do you think the world is?",
+    "I don't know, could you explain the concept of the world?",
+
+    7,
+    "Where does the universe end?",
+    "I'm not sure, what do you think the universe is?",
+    "I don't know, could you explain the concept of the universe?",
+
+    2,
+    "Is there a perfect life?",
+    "I'm not sure, what do you think perfection is?",
+    "I don't know, could you explain the concept of perfection?",
+
+    3,
+    "What is infinity?",
+    "I'm not sure",
+    "I don't know",
+
+    2,
+    "Why do we strive for perfection if it is not attainable?",
+    "I'm not sure, what do you think perfection is?",
+    "I don't know, could you explain the concept of perfection?",
+
+    2,
+    "Does sound happen if nothing is present to hear it?",
+    "I'm not sure, what do you think sound is?",
+    "I don't know, could you explain the concept of sound?",
+
+    2,
+    "Does utilizing time properly make our lives meaningful and happy?",
+    "I'm not sure, what do you think life is?",
+    "I don't know, could you explain the concept of life?",
+
+    2,
+    "Is it more important to be liked or respected?",
+    "I'm not sure, what do you think respect is?",
+    "I don't know, could you explain the concept of respect?",
+
+    2,
+    "Can life be meaningful without friends?",
+    "I'm not sure, what do you think life is?",
+    "I don't know, could you explain the concept of life?",
+
+    1,
+    "Where does the soul live?",
+    "I'm not sure, what do you think a soul is?",
+    "I don't know, could you explain the concept of a soul?",
+
+    2,
+    "How do you know if you love someone enough to marry them?",
+    "I'm not sure, what do you think love is?",
+    "I don't know, could you explain the concept of love?",
+
+    2,
+    "Is there a reason for life?",
+    "I'm not sure, what do you think life is?",
+    "I don't know, could you explain the concept of life?",
+
+    2,
+    "Do numbers in a bank account make people happy?",
+    "I'm not sure, what do you think happiness is?",
+    "I don't know, could you explain the concept of happiness?",
+
+    7,
+    "What will happen at the end of the world?",
+    "I'm not sure, what do you think the world is?",
+    "I don't know, could you explain the concept of the world?",
+
+    2,
+    "Is living life to the fullest possible?",
+    "I'm not sure, what do you think life is?",
+    "I don't know, could you explain the concept of life?",
+
+    2,
+    "Can spirituality make you a happy person?",
+    "I'm not sure, what do you think spirituality is?",
+    "I don't know, could you explain the concept of spirituality?",
+
+    3,
+    "What is education?",
+    "I'm not sure",
+    "I don't know",
+
+    2,
+    "Are highly intelligent people less happy than individuals with average intelligence?",
+    "I'm not sure, what do you think happiness is?",
+    "I don't know, could you explain the concept of happiness?",
+
+    2,
+    "Is there a supreme power?",
+    "I'm not sure, what do you think power is?",
+    "I don't know, could you explain the concept of power?",
+
+    2,
+    "Is there an absolute way to attain a happy state of mind?",
+    "I'm not sure, what do you think happiness is?",
+    "I don't know, could you explain the concept of happiness?",
+
+    7,
+    "How did the universe begin?",
+    "I'm not sure, what do you think the universe is?",
+    "I don't know, could you explain the concept of the universe?",
+
+    2,
+    "Does living your life for others make your life have meaning?",
+    "I'm not sure, what do you think meaning is?",
+    "I don't know, could you explain the concept of meaning?",
+
+    2,
+    "Can we have happiness without sadness?",
+    "I'm not sure, what do you think happiness is?",
+    "I don't know, could you explain the concept of happiness?",
+
+    2,
+    "Do knowledge and understanding make you content and happy as a person?",
+    "I'm not sure, what do you think happiness is?",
+    "I don't know, could you explain the concept of happiness?",
+
+    2,
+    "Does fate exist?",
+    "I'm not sure, what do you think fate is?",
+    "I don't know, could you explain the concept of fate?",
+
+    2,
+    "When does consciousness begin?",
+    "I'm not sure, what do you think consciousness is?",
+    "I don't know, could you explain the concept of consciousness?",
+
+    1,
+    "Does an ideal government exist?",
+    "I'm not sure, what do you think a government is?",
+    "I don't know, could you explain the concept of a government?",
+
+    1,
+    "Is life all a dream?",
+    "I'm not sure, what do you think a dream is?",
+    "I don't know, could you explain the concept of a dream?",
+
+    2,
+    "Does life have a reason?",
+    "I'm not sure, what do you think life is?",
+    "I don't know, could you explain the concept of life?",
+
+    2,
+    "If everything evolved from amoebas, how does the world still have amoebas?",
+    "I'm not sure, what do you think evolution is?",
+    "I don't know, could you explain the concept of evolution?",
+
+    1,
+    "Are there limitations on free speech?",
+    "I'm not sure, what do you think a limitation is?",
+    "I don't know, could you explain the concept of a limitation?",
+
+    1,
+    "The structure of DNA appears to be intelligently designed, what are the implications?",
+    "I'm not sure, what do you think a implication is?",
+    "I don't know, could you explain the concept of a implication?",
+
+    1,
+    "Do aliens exist?",
+    "I'm not sure, what do you think a alien is?",
+    "I don't know, could you explain the concept of a alien?",
+
+    2,
+    "Are we a minuscule part of intelligent life in the universe?",
+    "I'm not sure, what do you think life is?",
+    "I don't know, could you explain the concept of life?",
+
+    2,
+    "Is trust more important than love?",
+    "I'm not sure, what do you think love is?",
+    "I don't know, could you explain the concept of love?",
+
+    3,
+    "Why do we do things we do not like to do?",
+    "I'm not sure",
+    "I don't know",
+
+    6,
+    "If lying is wrong, are white lies okay?",
+    "I'm not sure, what kind of things do you think are wrong?",
+    "I don't know, could you explain what should be wrong?",
+
+    1,
+    "Do atheists make their own gods?",
+    "I'm not sure, what do you think a god is?",
+    "I don't know, could you explain the concept of a god?",
+
+    1,
+    "How should people live their lives?",
+    "I'm not sure, what do you think a person is?",
+    "I don't know, could you explain the concept of a person?",
+
+    2,
+    "Can artificial intelligence be creative?",
+    "I'm not sure, what do you think creativity is?",
+    "I don't know, could you explain the concept of creativity?",
+
+    2,
+    "If judgment is for God, why do we pass judgment?",
+    "I'm not sure, what do you think judgment is?",
+    "I don't know, could you explain the concept of judgment?",
+
+    3,
+    "What is intelligence?",
+    "I'm not sure",
+    "I don't know",
+
+    1,
+    "Can religious beliefs affect scientific thinking?",
+    "I'm not sure, what do you think a belief is?",
+    "I don't know, could you explain the concept of a belief?",
+
+    2,
+    "Will a world without reliance on modern technology make any progress?",
+    "I'm not sure, what do you think progress is?",
+    "I don't know, could you explain the concept of progress?",
+
+    1,
+    "Do we have a soul?",
+    "I'm not sure, what do you think a soul is?",
+    "I don't know, could you explain the concept of a soul?",
+
+    2,
+    "Is human potential capable of anything?",
+    "I'm not sure, what do you think potential is?",
+    "I don't know, could you explain the concept of potential?",
+
+    1,
+    "What do people strive for after enlightenment?",
+    "I'm not sure, what do you think a person is?",
+    "I don't know, could you explain the concept of a person?",
+
+    2,
+    "Is death a new beginning?",
+    "I'm not sure, what do you think death is?",
+    "I don't know, could you explain the concept of death?",
+
+    2,
+    "What defines you?",
+    "I'm not sure, what do you think definition is?",
+    "I don't know, could you explain the concept of definition?",
+
+    2,
+    "Why does God not intervene when evil takes root in people?",
+    "I'm not sure, what do you think evil is?",
+    "I don't know, could you explain the concept of evil?",
+
+    2,
+    "What happens after we die?",
+    "I'm not sure, what do you think death is?",
+    "I don't know, could you explain the concept of death?",
+
+    2,
+    "Does belief make God exist?",
+    "I'm not sure, what do you think belief is?",
+    "I don't know, could you explain the concept of belief?",
+
+    2,
+    "Isn't one person's terrorist another person's freedom fighter?",
+    "I'm not sure, what do you think terrorism is?",
+    "I don't know, could you explain the concept of terrorism?",
+
+    7,
+    "Will robots take over the world in the future?",
+    "I'm not sure, what do you think the future is?",
+    "I don't know, could you explain the concept of the future?",
+
+    2,
+    "How much control do you have over your life?",
+    "I'm not sure, what do you think life is?",
+    "I don't know, could you explain the concept of life?",
+
+    2,
+    "Does the path to salvation lie within us?",
+    "I'm not sure, what do you think salvation is?",
+    "I don't know, could you explain the concept of salvation?",
+
+    1,
+    "How do you know your perceptions are real?",
+    "I'm not sure, what do you think a perception is?",
+    "I don't know, could you explain the concept of a perception?",
+
+    1,
+    "Are we the biggest threat to humanity?",
+    "I'm not sure, what do you think a threat is?",
+    "I don't know, could you explain the concept of a threat?",
+
+    2,
+    "If money cannot buy happiness, can you ever be truly happy with no money?",
+    "I'm not sure, what do you think happiness is?",
+    "I don't know, could you explain the concept of happiness?",
+
+    1,
+    "Do parallel universes exist?",
+    "I'm not sure, what do you think a universe is?",
+    "I don't know, could you explain the concept of a universe?",
+
+    2,
+    "What role does honor play in today's society?",
+    "I'm not sure, what do you think honor is?",
+    "I don't know, could you explain the concept of honor?",
+
+    2,
+    "How does one find purpose in life?",
+    "I'm not sure, what do you think life is?",
+    "I don't know, could you explain the concept of life?",
+
+    1,
+    "Is a family still relevant in the modern world?",
+    "I'm not sure, what do you think a family is?",
+    "I don't know, could you explain the concept of a family?",
+
+    1,
+    "If aliens attack, what will we do?",
+    "I'm not sure, what do you think a alien is?",
+    "I don't know, could you explain the concept of a alien?",
+
+    2,
+    "What is true love?",
+    "I'm not sure, what do you think truth is?",
+    "I don't know, could you explain the concept of truth?",
+
+    1,
+    "Do guns protect or kill people?",
+    "I'm not sure, what do you think a gun is?",
+    "I don't know, could you explain the concept of a gun?",
+
+    2,
+    "What is true strength?",
+    "I'm not sure, what do you think truth is?",
+    "I don't know, could you explain the concept of truth?",
+
+    2,
+    "Will racism cease to exist?",
+    "I'm not sure, what do you think existence is?",
+    "I don't know, could you explain the concept of existence?",
+
+    2,
+    "How do you know that your experience of consciousness is the same as other people's experience of consciousness?",
+    "I'm not sure, what do you think consciousness is?",
+    "I don't know, could you explain the concept of consciousness?",
+
+    2,
+    "Why is beauty associated with morality?",
+    "I'm not sure, what do you think morality is?",
+    "I don't know, could you explain the concept of morality?",
+
+    2,
+    "Who decides what morality is?",
+    "I'm not sure, what do you think morality is?",
+    "I don't know, could you explain the concept of morality?",
+
+    2,
+    "Why do we respect the dead more than the living?",
+    "I'm not sure, what do you think respect is?",
+    "I don't know, could you explain the concept of respect?",
+
+    6,
+    "Is a \"wrong\" act okay if nobody ever knows about it?",
+    "I'm not sure, what kind of things do you think are wrong?",
+    "I don't know, could you explain what should be wrong?",
+
+    2,
+    "Does God have supreme power?",
+    "I'm not sure, what do you think god is?",
+    "I don't know, could you explain the concept of god?",
+
+    2,
+    "What is the difference between living and being alive?",
+    "I'm not sure, what do you think life is?",
+    "I don't know, could you explain the concept of life?",
+
+    2,
+    "Will the world be a better place if caste and religion cease to exist?",
+    "I'm not sure, what do you think existence is?",
+    "I don't know, could you explain the concept of existence?",
+
+    2,
+    "Who defines good and evil?",
+    "I'm not sure, what do you think evil is?",
+    "I don't know, could you explain the concept of evil?",
+
+    3,
+    "What's more important: doing the right thing or doing things right?",
+    "I'm not sure",
+    "I don't know",
+
+    2,
+    "Why do people fear losing things that they do not even have yet?",
+    "I'm not sure, what do you think loss is?",
+    "I don't know, could you explain the concept of loss?",
+
+    2,
+    "Do we love ourselves more in the virtual world and less in the real world?",
+    "I'm not sure, what do you think love is?",
+    "I don't know, could you explain the concept of love?",
+
+    1,
+    "What makes a good friend?",
+    "I'm not sure, what do you think a friend is?",
+    "I don't know, could you explain the concept of a friend?",
+
+    2,
+    "Is humanity doomed to head in a destructive direction?",
+    "I'm not sure, what do you think humanity is?",
+    "I don't know, could you explain the concept of humanity?",
+
+    1,
+    "Do you make your own decisions, or let others make them for you?",
+    "I'm not sure, what do you think a decision is?",
+    "I don't know, could you explain the concept of a decision?",
+
+    8,
+    "Should full access to the internet be a fundamental right?",
+    "I'm not sure, what do you think rights are?",
+    "I don't know, could you explain what rights are?",
+
+    2,
+    "Is peace the only way to stop a war?",
+    "I'm not sure, what do you think peace is?",
+    "I don't know, could you explain the concept of peace?",
+
+    3,
+    "What is the truth?",
+    "I'm not sure",
+    "I don't know",
+
+    1,
+    "Can memories be erased?",
+    "I'm not sure, what do you think a memory is?",
+    "I don't know, could you explain the concept of a memory?",
+
+    3,
+    "What makes you, you?",
+    "I'm not sure",
+    "I don't know",
+
+    2,
+    "Is religion conceptualized by one's own belief system?",
+    "I'm not sure, what do you think belief is?",
+    "I don't know, could you explain the concept of belief?",
+
+    2,
+    "What things hold you back from doing the things that you really want to?",
+    "I'm not sure, what do you think want is?",
+    "I don't know, could you explain the concept of want?",
+
+    7,
+    "Will the world come to an end by human hands?",
+    "I'm not sure, what do you think the world is?",
+    "I don't know, could you explain the concept of the world?",
+
+    2,
+    "What is true happiness?",
+    "I'm not sure, what do you think truth is?",
+    "I don't know, could you explain the concept of truth?",
+
+    2,
+    "Intelligence or wisdom, what's more important for a better world?",
+    "I'm not sure, what do you think Intelligence is?",
+    "I don't know, could you explain the concept of Intelligence?",
+
+    2,
+    "Where is the line between insanity and creativity?",
+    "I'm not sure, what do you think creativity is?",
+    "I don't know, could you explain the concept of creativity?",
+
+    2,
+    "Is true beauty subjective or objective?",
+    "I'm not sure, what do you think subjectivity is?",
+    "I don't know, could you explain the concept of subjectivity?",
+
+    2,
+    "What one piece of advice would you offer to a newborn infant?",
+    "I'm not sure, what do you think advice is?",
+    "I don't know, could you explain the concept of advice?",
+
+    2,
+    "What is the extent of freedom human beings should have?",
+    "I'm not sure, what do you think freedom is?",
+    "I don't know, could you explain the concept of freedom?",
+
+    2,
+    "Does nature shape our personalities more than nurture?",
+    "I'm not sure, what do you think nature is?",
+    "I don't know, could you explain the concept of nature?",
+
+    2,
+    "What is the meaning of rich and poor in the modern world?",
+    "I'm not sure, what do you think wealth is?",
+    "I don't know, could you explain the concept of wealth?",
+
+    2,
+    "To what extent do you shape your own destiny, and how much is down to fate?",
+    "I'm not sure, what do you think fate is?",
+    "I don't know, could you explain the concept of fate?",
+
+    2,
+    "Do we control technology or is it controlling us?",
+    "I'm not sure, what do you think technology is?",
+    "I don't know, could you explain the concept of technology?",
+
+    7,
+    "If you could choose just one thing to change about the world, what would it be?",
+    "I'm not sure, what do you think the world is?",
+    "I don't know, could you explain the concept of the world?",
+
+    2,
+    "Is it worse to fail at something or never attempt it in the first place?",
+    "I'm not sure, what do you think failure is?",
+    "I don't know, could you explain the concept of failure?",
+
+    2,
+    "What exactly is self-esteem and where does it come from?",
+    "I'm not sure, what do you think self-esteem is?",
+    "I don't know, could you explain the concept of self-esteem?",
+
+    1,
+    "Will a curb on buying guns and arms reduce the number of shooting sprees in the world?",
+    "I'm not sure, what do you think a gun is?",
+    "I don't know, could you explain the concept of a gun?",
+
+    2,
+    "Do we change when we have power?",
+    "I'm not sure, what do you think power is?",
+    "I don't know, could you explain the concept of power?",
+
+    2,
+    "Can a person be \"educated\" without a formal education?",
+    "I'm not sure, what do you think education is?",
+    "I don't know, could you explain the concept of education?",
+
+    1,
+    "Will technological advances wipe out humanity?",
+    "I'm not sure, what do you think a advance is?",
+    "I don't know, could you explain the concept of a advance?"
 ]
