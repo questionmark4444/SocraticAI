@@ -19,7 +19,7 @@ dropout = 0.2
 head_size = n_embd // n_head
 
 # set mode
-mode = "training"
+mode = input("retrain the mode (y/n): ")
 
 torch.manual_seed(1337)
 
@@ -231,7 +231,7 @@ class GPTLanguageModel(nn.Module):
             idx = torch.cat((idx, idx_next), dim=1) # (B, T+1)
         return idx
 
-if mode == "training":
+if mode == "y":
     model = GPTLanguageModel()
     model.to(device)
     # print the number of parameters in the model
@@ -256,25 +256,26 @@ if mode == "training":
     # save model
     with open('model.pkl', 'wb') as f:
         pickle.dump(model, f)
-else:
-    # load model
-    with open('model.pkl', 'rb') as f:
-        model = pickle.load(f)
-    model.to(device)
 
-    # print the number of parameters in the model
-    print(sum(p.numel() for p in model.parameters())/1e6, 'M parameters')
+# load model
+with open('model.pkl', 'rb') as f:
+    model = pickle.load(f)
+model.to(device)
 
-    # input question from user
-    inputed = input('question: ').lower()
-    question = encode(f'question: "{inputed}"\nanswer: "i don\'t know')
-    while len(question) < block_size:
-        question.insert(0, encode('\n')[0])
+# print the number of parameters in the model
+print(sum(p.numel() for p in model.parameters())/1e6, 'M parameters')
 
-    # generate from the model
-    context = torch.zeros((1, len(question)), dtype=torch.long, device='cpu')
-    for x in range(len(question)):
-        context[0][x] = question[x]
-    e = model.generate(context, max_new_tokens=25)
-    for t in e :
-        print(decode(t.tolist()))
+# input question from user
+inputed = input('question: ').lower()
+question = encode(f'question: "{inputed}"\nanswer: "i don\'t know')
+while len(question) < block_size:
+    question.insert(0, encode('\n')[0])
+
+# generate from the model
+context = torch.zeros((1, len(question)), dtype=torch.long, device='cpu')
+for x in range(len(question)):
+    context[0][x] = question[x]
+e = model.generate(context, max_new_tokens=25)
+for t in e :
+    print("")
+    print(decode(t.tolist()).replace("\n\n", ""))
