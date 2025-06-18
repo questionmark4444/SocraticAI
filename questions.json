@@ -19,10 +19,10 @@
     "I'm not sure",
     "I don't know",
 
-    4,
+    1,
     "Can we really know what it feels like to be a bat?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think a bat is?",
+    "I don't know, could you explain the concept of a bat?",
 
     2,
     "When you have a toothache, is the pain in your mouth or in your brain?",
@@ -39,20 +39,20 @@
     "I'm not sure, what do you think a feeling is?",
     "I don't know, could you explain the concept of a feeling?",
 
-    4,
+    2,
     "How is love different from passion or sexual desire?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think love is?",
+    "I don't know, could you explain the concept of love?",
 
     2,
     "Are emotions irrational?",
     "I'm not sure, what do you think rationality is?",
     "I don't know, could you explain the concept of rationality?",
 
-    4,
+    2,
     "Which would you rather be - an unhappy human being or a happy dog?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think happiness is?",
+    "I don't know, could you explain the concept of happiness?",
 
     2,
     "What is the meaning of life?",
@@ -64,20 +64,20 @@
     "I'm not sure, what do you think purpose is?",
     "I don't know, could you explain the concept of purpose?",
 
-    4,
+    1,
     "Is it always better to have more choices?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think a choice is?",
+    "I don't know, could you explain the concept of a choice?",
 
     2,
     "Does freewill really exist?",
     "I'm not sure, what do you think freewill is?",
     "I don't know, could you explain the concept of freewill?",
 
-    4,
+    2,
     "If there is no freewill, should we punish people at all?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think freewill is?",
+    "I don't know, could you explain the concept of freewill?",
 
     2,
     "If God knows what you will do tomorrow, do you still have freewill?",
@@ -94,10 +94,10 @@
     "I'm not sure, what do you think evil is?",
     "I don't know, could you explain the concept of evil?",
 
-    4,
+    2,
     "Can God create a stone so heavy that he cannot lift?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think god is?",
+    "I don't know, could you explain the concept of god?",
 
     2,
     "Can there be two almighty Gods?",
@@ -164,15 +164,15 @@
     "I'm not sure, what do you think responsibility is?",
     "I don't know, could you explain the concept of responsibility?",
 
-    4,
+    2,
     "Why do we punish people?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think punishment is?",
+    "I don't know, could you explain the concept of punishment?",
 
-    4,
+    2,
     "Is it alright to torture terrorists to extract information?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think torture is?",
+    "I don't know, could you explain the concept of torture?",
 
     7,
     "When is it ok, if ever, to disobey the law?",
@@ -244,10 +244,10 @@
     "I'm not sure, what kind of things do you think should be intervened?",
     "I don't know, could you explain what things should be intervened?",
 
-    4,
+    2,
     "Is there a difference between free trade and fair trade?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think trade is?",
+    "I don't know, could you explain the concept of trade?",
 
     6,
     "What is wrong, if anything, about protectionism?",
@@ -274,25 +274,25 @@
     "I'm not sure, what do you think preservation is?",
     "I don't know, could you explain the concept of preservation?",
 
-    4,
+    1,
     "Is race a biological category or a social construct?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think a construct is?",
+    "I don't know, could you explain the concept of a construct?",
 
     1,
     "Are you the same person you were ten years ago?",
     "I'm not sure, what do you think a person is?",
     "I don't know, could you explain the concept of a person?",
 
-    4,
+    1,
     "What is a person? Is it the mind, or the body?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think a mind is?",
+    "I don't know, could you explain the concept of a mind?",
 
-    4,
+    2,
     "Do we think with language or pictures?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think language is?",
+    "I don't know, could you explain the concept of language?",
 
     1,
     "Why do we dream?",
@@ -303,11 +303,6 @@
     "Can animals reason?",
     "I'm not sure, what do you think reason is?",
     "I don't know, could you explain the concept of reason?",
-
-    3,
-    "What about fish, oysters and tomatoes?",
-    "I'm not sure",
-    "I don't know",
 
     8,
     "Do animals have rights?",
@@ -409,10 +404,10 @@
     "I'm not sure, what kind of things do you think should be possible?",
     "I don't know, could you explain what things should be possible?",
 
-    4,
+    1,
     "If you go back in time and teach young Einstein relativity theory, where does the idea come from?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think a idea is?",
+    "I don't know, could you explain the concept of a idea?",
 
     1,
     "Are there parallel universes?",
@@ -424,15 +419,15 @@
     "I'm not sure, what do you think a event is?",
     "I don't know, could you explain the concept of a event?",
 
-    4,
+    2,
     "'This sentence is false.' Is it true or false?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think truth is?",
+    "I don't know, could you explain the concept of truth?",
 
-    4,
+    2,
     "'It will rain a week later.' Is it true or false or neither?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure, what do you think truth is?",
+    "I don't know, could you explain the concept of truth?",
 
     2,
     "Is truth relative, or a matter of opinion?",
@@ -611,13 +606,13 @@
 
     2,
     "Where does self-worth come from?",
-    "I'm not sure, what do you think worth is?",
-    "I don't know, could you explain the concept of worth?",
+    "I'm not sure, what do you think self-worth is?",
+    "I don't know, could you explain the concept of self-worth?",
 
     2,
     "How do you determine one's self-worth?",
-    "I'm not sure, what do you think worth is?",
-    "I don't know, could you explain the concept of worth?",
+    "I'm not sure, what do you think self-worth is?",
+    "I don't know, could you explain the concept of self-worth?",
 
     2,
     "Is one human life worth more than another?",
@@ -1159,10 +1154,10 @@
     "I'm not sure, what do you think fair is?",
     "I don't know, could you explain the concept of fair?",
 
-    4,
+    3,
     "What makes you... you?",
-    "I'm not sure, what do you think?",
-    "I don't know, could you explain?",
+    "I'm not sure",
+    "I don't know",
 
     3,
     "What is truth?",
