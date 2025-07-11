@@ -6,14 +6,13 @@ data2 = json.load(open('questions.json', 'r'))
 
 question = ""
 x = 0
-while x < len(data1):
-    if type(data1[x]) == str:
-        question = data1[x]
-    else:
+while x < int(len(data1)/2):
+    question = data1[x*2]
+    for list_index in range(3):
         for i in range(128):
             print(f"")
         print(f"question: \"{question}\"")
-        print(f"answer: \"{data1[x][2]}\"")
+        print(f"answer: \"{data1[x*2+1][list_index]}\"")
     x += 1
 
 x = 0
