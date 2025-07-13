@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 import pickle
+import json
 
 # hyperparameters
 batch_size = 64 # how many independent sequences will we process in parallel?
@@ -19,7 +20,16 @@ dropout = 0.2
 head_size = n_embd // n_head
 
 # set mode
-mode = input("retrain the mode (y/n): ")
+mode = input('retrain the mode (y/n): ')
+if (mode == 'y'):
+    mode = 'training'
+else:
+    mode = input('test the mode (y/n): ')
+    if (mode == 'y'):
+        mode = 'testing'
+    else:
+        mode = 'None'
+print('')
 
 torch.manual_seed(1337)
 
@@ -231,7 +241,7 @@ class GPTLanguageModel(nn.Module):
             idx = torch.cat((idx, idx_next), dim=1) # (B, T+1)
         return idx
 
-if mode == "y":
+if mode == 'training':
     model = GPTLanguageModel()
     model.to(device)
     # print the number of parameters in the model
@@ -245,7 +255,7 @@ if mode == "y":
         # every once in a while evaluate the loss on train and val sets
         if iter % eval_interval == 0 or iter == max_iters - 1:
             losses = estimate_loss()
-            print(f"step {iter}: loss {losses:.4f}")
+            print(f'step {iter}: loss {losses:.4f}')
 
         # evaluate the loss
         logits, loss = model.batch()
@@ -263,19 +273,25 @@ with open('model.pkl', 'rb') as f:
 model.to(device)
 
 # print the number of parameters in the model
-print(sum(p.numel() for p in model.parameters())/1e6, 'M parameters')
+print('model has ', sum(p.numel() for p in model.parameters())/1e6, 'M parameters')
 
 # input question from user
-inputed = input('question: ').lower()
-question = encode(f'question: "{inputed}"\nanswer: "i don\'t know')
-while len(question) < block_size:
-    question.insert(0, encode('\n')[0])
+questions = []
+if mode != 'testing':
+    questions.append(input('question: ').lower())
+else:
+    questions = json.load(open('testing.json', 'r'))
 
-# generate from the model
-context = torch.zeros((1, len(question)), dtype=torch.long, device='cpu')
-for x in range(len(question)):
-    context[0][x] = question[x]
-e = model.generate(context, max_new_tokens=25)
-for t in e :
-    print("")
-    print(decode(t.tolist()).replace("\n\n", ""))
+for x in range(len(questions)):
+    question = encode(f'question: "{questions[x]}"\nanswer: "i don\'t know')
+    while len(question) < block_size:
+        question.insert(0, encode('\n')[0])
+
+    # generate from the model
+    context = torch.zeros((1, len(question)), dtype=torch.long, device='cpu')
+    for x in range(len(question)):
+        context[0][x] = question[x]
+    e = model.generate(context, max_new_tokens=25)
+    for t in e :
+        print('')
+        print(decode(t.tolist()).replace('\n\n', ''))
