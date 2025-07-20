@@ -7,7 +7,7 @@ import json
 # hyperparameters
 batch_size = 64 # how many independent sequences will we process in parallel?
 block_size = 128 # what is the maximum context length for predictions?
-max_iters = 1500
+max_iters = 3000
 eval_interval = 100
 learning_rate = 3e-4
 device = 'cpu'
@@ -20,16 +20,15 @@ dropout = 0.2
 head_size = n_embd // n_head
 
 # set mode
-mode = input('retrain the mode (y/n): ')
+mode = input('retrain the models (y/n): ')
 if (mode == 'y'):
     mode = 'training'
 else:
-    mode = input('test the mode (y/n): ')
+    mode = input('test the models (y/n): ')
     if (mode == 'y'):
         mode = 'testing'
     else:
         mode = 'None'
-print('')
 
 torch.manual_seed(1337)
 
@@ -241,11 +240,43 @@ class GPTLanguageModel(nn.Module):
             idx = torch.cat((idx, idx_next), dim=1) # (B, T+1)
         return idx
 
+    def model_information_printer(self, mode_index=None):
+        # get number of parameters
+        parameter_count = 0
+        for p in self.parameters():
+            parameter_count += p.numel()
+
+        # print the number of parameters measured in millions in the model and it's index
+        print('')
+        if (mode_index == None):
+            print(f'model has {parameter_count/1e6} million parameters')
+        else:
+            print(f'model {mode_index} has {parameter_count/1e6} million parameters')
+        print('')
+
+    def question_answerer(self, question_string):
+        # encode question and add newline characters as placeholders for when the block is too small
+        question = encode(f'question: "{question_string}"\nanswer: "i don\'t know')
+        while len(question) < block_size:
+            question.insert(0, encode('\n')[0])
+
+        # generate from the model
+        context = torch.zeros((1, len(question)), dtype=torch.long, device='cpu')
+        for x in range(len(question)):
+            context[0][x] = question[x]
+        e = model.generate(context, max_new_tokens=25)
+        for t in e :
+            print('')
+            print(decode(t.tolist()).replace('\n\n', ''))
+
 if mode == 'training':
+    model_instance = 0
+
     model = GPTLanguageModel()
     model.to(device)
+
     # print the number of parameters in the model
-    print(sum(p.numel() for p in model.parameters())/1e6, 'M parameters')
+    model.model_information_printer()
 
     # create a PyTorch optimizer
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
@@ -257,6 +288,11 @@ if mode == 'training':
             losses = estimate_loss()
             print(f'step {iter}: loss {losses:.4f}')
 
+            # save model
+            with open(f'model{model_instance}.pkl', 'wb') as f:
+                pickle.dump(model, f)
+            model_instance += 1
+
         # evaluate the loss
         logits, loss = model.batch()
         optimizer.zero_grad(set_to_none=True)
@@ -267,31 +303,33 @@ if mode == 'training':
     with open('model.pkl', 'wb') as f:
         pickle.dump(model, f)
 
-# load model
-with open('model.pkl', 'rb') as f:
-    model = pickle.load(f)
-model.to(device)
-
-# print the number of parameters in the model
-print('model has ', sum(p.numel() for p in model.parameters())/1e6, 'M parameters')
-
-# input question from user
-questions = []
+# input question from user for only last model
 if mode != 'testing':
-    questions.append(input('question: ').lower())
+    # load model
+    with open('model.pkl', 'rb') as f:
+        model = pickle.load(f)
+    model.to(device)
+
+    # print the number of parameters in the model
+    model.model_information_printer()
+
+    # input question from user
+    model.question_answerer(input('question: ').lower())
+
+# test questions from file for several model stages
 else:
+    # load testing questions from file
     questions = json.load(open('testing.json', 'r'))
 
-for x in range(len(questions)):
-    question = encode(f'question: "{questions[x]}"\nanswer: "i don\'t know')
-    while len(question) < block_size:
-        question.insert(0, encode('\n')[0])
+    # loop over each model file
+    for model_index in range(0, int(max_iters/eval_interval)+1):
+        # load model file
+        with open(f'model{model_index}.pkl', 'rb') as f:
+            model = pickle.load(f)
+        model.to(device)
 
-    # generate from the model
-    context = torch.zeros((1, len(question)), dtype=torch.long, device='cpu')
-    for x in range(len(question)):
-        context[0][x] = question[x]
-    e = model.generate(context, max_new_tokens=25)
-    for t in e :
+        # test model with each question
+        for x in range(len(questions)):
+            model.question_answerer(questions[x])
+
         print('')
-        print(decode(t.tolist()).replace('\n\n', ''))

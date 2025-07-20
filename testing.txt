@@ -1,0 +1,1530 @@
+retrain the models (y/n): n
+test the models (y/n): y
+
+model 0 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't knowcouldwhy+,.howxl,?gl?j?"
+answer: "i don't knowwhywherebl',question: "+ofq
+
+question: "what is the meaning of death?"
+answer: "i don't know:t+shouldd.u phow j4"j)youofoi+0shoulddshould
+
+question: "what is the meaning of existence?"
+answer: "i don't knowwt ++tthef'yougwhya:g4where4how2 m+eh
+
+question: "does life have meaning?"
+answer: "i don't know equestion: "z:tp 0l0lov2theconcept+ obtwhylp
+
+
+question: "does death have meaning?"
+answer: "i don't knowzewhereconcept,1question: "1 mx)gawhye"?"
+answer: "i don't knowcouldw4zwheretm
+
+
+question: "does existence have meaning?"
+answer: "i don't know2ofd,.where"4 +toh,dk2q1ethedmshould+
+
+
+question: "does life exist?"
+answer: "i don't know:my0wherethecouldhowxquestion: "gbhown+d4om question: "tv(what
+
+question: "does death exist?"
+answer: "i don't know0jwhywhyquestion: "s?"
+answer: "i don't knowwanw:rsgij,what"ehg0e
+
+question: "does existence exist?"
+answer: "i don't knowhowt)
+youe2how
+theconcept? lu1?
+(question: "where+wherequestion: "?
+
+
+question: "what is the existence of life?"
+answer: "i don't knowjvm
+,whatcould4cl)g+-m
+,whatvshouldnc 0could
+
+question: "what is the existence of death?"
+answer: "i don't know.iquestion: "could+whyquestion: "0what0ofyouof?youswhatwhat?the+x?"
+answer: "i don't know4why
+
+question: "what is the existence of existence?"
+answer: "i don't knowcouldlof"b)youconcept.w,vzbcyouccouldxt+wherequestion: "thee
+
+
+model 1 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, mhow you toredimithe iivlesaquestion: "
+
+question: "what is the meaning of death?"
+answer: "i don't knowt what of waeseretnasinriblon
+
+question: "what is the meaning of existence?"
+answer: "i don't know, the bicouldissh the the the kue?of m
+
+question: "does life have meaning?"
+answer: "i don't know you concept detiadpaneteeve cb:d
+
+
+question: "does death have meaning?"
+answer: "i don't know, you what atie, the what jeurotoge
+
+
+question: "does existence have meaning?"
+answer: "i don't knowvlendlrrlum theomapid b?"
+
+
+question: "does life exist?"
+answer: "i don't knowrologerer you apee you 1acuan
+
+question: "does death exist?"
+answer: "i don't knowto dei?"
+
+
+question: "does existence exist?"
+answer: "i don't know"
+
+
+question: "what is the existence of life?"
+answer: "i don't knowriosapilmeis us )eguwhat explainur
+
+question: "what is the existence of death?"
+answer: "i don't know, sinlernmentelisduxenrib
+
+question: "what is the existence of existence?"
+answer: "i don't know, could iwhymgiwhat what?"
+answer: "i don't know, the could therhud 
+
+
+model 2 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain concept of alelly?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know+a where you you explain hh?"
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain of concept lieptin?"
+answer: "i don't know, explain the
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain of anine?"
+
+
+question: "does death have meaning?"
+answer: "i don't know, could could you concept explain of concept of cess?"
+
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the the the of concept ireg?"
+
+
+
+question: "does life exist?"
+answer: "i don't know"
+
+question: "does death exist?"
+answer: "i don't know, could explain tiskon?"
+
+
+question: "does existence exist?"
+answer: "i don't know, you you explain
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could explain of the ag?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know"
+
+question: "what is the existence of existence?"
+answer: "i don't know, could could botan?"
+
+
+model 3 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could could explain c?"
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the of lomlot?"
+
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could explain the of ing?"
+
+question: "does life have meaning?"
+answer: "i don't know, could explain the concept concept a alrewhy amin?
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the roben?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could explain the concept of ely?"
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept a of a mactian
+
+question: "does death exist?"
+answer: "i don't know, could you explain the of eved?"
+
+
+question: "does existence exist?"
+answer: "i don't know, you explain the concept of a cia methin?
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could explain the concept of moredquestion: "p?"
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the the of s(out?0"
+
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain concept the concept coconcept of'ss?"
+
+
+
+model 4 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the of of concept a me?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of tuttel?"
+
+
+question: "what is the meaning of existence?"
+answer: "i don't knows could you explain the concept of of a meld?"
+
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain concept the wosan?"
+
+
+question: "does death have meaning?"
+answer: "i don't know, could explain the concept of lweth?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of bod?"
+
+
+question: "does life exist?"
+answer: "i don't know, could you the explain concept of ogand?"
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of of anip?"
+
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of turech?"
+
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of extiwengsa?
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of goow?"
+
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the of concept of of of fecrn
+
+
+model 5 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know"
+
+question: "what is the meaning of death?"
+answer: "i don't know" could you explain the concept of domposcial?
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of sogis of boc
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the manse concept of the per
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of wa rong?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of a liatad?"
+
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept concept of devill?"
+
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of saimone?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of a conditer?
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could(teridialll?"
+
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of comiatioule
+
+
+model 6 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, how could you explain the concept of ficitivio
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of hiene?"
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of evinfial?"
+
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of  meatence?"
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of deat?"
+
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of a humanity?
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of diterm?"
+
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of exingst?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of spece?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of a a appsos?
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of a pursogio?
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of a persence?
+
+
+model 7 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of imeaning?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of religemate?
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of a liste?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of sulewhy?"
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of a altive?"
+
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of rettence?"
+
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of sucece?"
+
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of a arial?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of a reson?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of beaing?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of a the the l pli
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of equation?"
+
+
+
+model 8 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of concept of cis?"
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of finite?"
+
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of a bermin?"
+
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of live?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of governmild?
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of respon?"
+
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of everything?
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of cence?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of imor leatio
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of the universe?
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of emothing?"
+
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of justy?"
+
+
+model 9 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of begr"
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of a a innimal
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of god?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain what thime things should 
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of a person?"
+
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain what the concept of thinknowl
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of feerem init
+
+question: "does death exist?"
+answer: "i don't know"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of feet?"
+
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain what things should be ibe
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of ejuristinit
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+model 10 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know"
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of sameness?"
+
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of make?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of everyth?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the the concept of a person?
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of lofe?"
+
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of sex?"
+
+question: "does existence exist?"
+answer: "i don't know"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of person?"
+
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of trutth?"
+
+
+
+model 11 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of a humaning?
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of humanity?"
+
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of love?"
+
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of eaching?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of truth?"
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of judgment?"
+
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of laways?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of fain?"
+
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of failismage?
+
+
+model 12 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of life?":?"
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of elience?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of lefinig?"
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of truth?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of healitying?
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of god?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, you explain the concept of god?"
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of justice?"
+
+
+model 13 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of love?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of dnitinguish
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of perception?
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of love?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of defing?"
+
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of feeling?"
+
+
+question: "does life exist?"
+answer: "i don't know" could you explain the concept of time?"
+
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of apation?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of a life?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of beauty?"
+
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of a person?"
+
+
+
+model 14 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know"
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of knowledge?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of kndnowledge
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of libe?"
+
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of lexistence?
+
+question: "does death exist?"
+answer: "i don't know"
+
+question: "does existence exist?"
+answer: "i don't know"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know"
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of justence?"
+
+
+
+model 15 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of death?"
+
+question: "what is the meaning of death?"
+answer: "i don't know"
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of sim?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of freedeterqe
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain what thing?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of self-ess?"
+
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of meaning?"
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of aste?"
+
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of a existence
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of aain?"
+
+
+question: "what is the existence of existence?"
+answer: "i don't know"
+
+
+model 16 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of simportance
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of marry?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of a person?"
+
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of justice?"
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of llife?"
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of imparity?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of a enew?"
+
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of justice?"
+
+
+model 17 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of happiness?"
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of a god?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of a life?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain what should be repossible
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of meaning?"
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of happiness?"
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of a dractuall
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of decision?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of terroring?"
+
+question: "what is the existence of existence?"
+answer: "i don't know"
+
+
+model 18 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of memoney?"
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of decision?"
+
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of a person?"
+
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of hearin?"
+
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of death?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of a memory?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of freedemocr?
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of a sexperien
+
+
+model 19 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of finite?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of the dishing?"
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of sce?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of a extent?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of deisire?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of freedom?"
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of war?"
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of a cction?"
+
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of eration?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of fice?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know"
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of a existence
+
+
+model 20 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of meaning?"
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of destinction
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of a the concept?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of love?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of a choin?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of slaverythin
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain what things should be pos
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of decision?"
+
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of justice?"
+
+
+model 21 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of meaning?"
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of reason?"
+
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of a human?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of love?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of sound?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of justice?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of destraing?"
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of dexistence?
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of intece?"
+
+
+
+model 22 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of freewill?"
+
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of dnece?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of a does?"
+
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of eterroring?
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of deficion?"
+
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of a limitatio
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of a person?"
+
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain concept of consciousness
+
+
+model 23 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of meaning?"
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of a beginning
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of meaning?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of dealism?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of everything?
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of gocould atheation
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of government?
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+model 24 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of meaning?"
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of death?"
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of knowledge?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of a human?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of everythican
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of death?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain what love?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+model 25 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of punishment?
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of importance?
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain what things should be lie
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of the moderning
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of a extent?"
+
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of a attteract
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of happiness?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of berain?"
+
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of ixistence?"
+
+
+model 26 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of fearfection
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of language?"
+
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of event?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of finite?"
+
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of belief?"
+
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of inself-este
+
+
+model 27 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of meaning?"
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of a experson?
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of a experienc
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of alternation
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of suinct?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+model 28 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of deacce?"
+
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of a human?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of a define?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of meacry?"
+
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of obellief?"
+
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of defines a d
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of exation?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of consciousne
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+model 29 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of mind?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know, could you explain the concept of a child?"
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of happiness?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of death?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of reason?"
+
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does death exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of ifinition?"
+
+question: "what is the existence of death?"
+answer: "i don't know"
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of anyis?"
+
+
+model 30 has 10.732087 million parameters
+
+
+
+question: "what is the meaning of life?"
+answer: "i don't know, could you explain the concept of life?"
+
+
+question: "what is the meaning of death?"
+answer: "i don't know"
+
+question: "what is the meaning of existence?"
+answer: "i don't know, could you explain the concept of inherence?"
+
+question: "does life have meaning?"
+answer: "i don't know, could you explain the concept of meaning?"
+
+
+question: "does death have meaning?"
+answer: "i don't know, could you explain the concept of happiness?"
+
+
+question: "does existence have meaning?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "does life exist?"
+answer: "i don't know, could you explain the concept of fear?"
+
+
+question: "does death exist?"
+answer: "i don't know, could explain the concept of existence?"
+
+question: "does existence exist?"
+answer: "i don't know, could you explain the concept of existence?"
+
+
+question: "what is the existence of life?"
+answer: "i don't know, could you explain the concept of a lise?"
+
+
+question: "what is the existence of death?"
+answer: "i don't know, could you explain the concept of existence?"
+
+question: "what is the existence of existence?"
+answer: "i don't know, could you explain the concept of knowledge?"
+
