@@ -1,4 +1,6 @@
+# python virtual environment
 run_ai/
+# preprocessed data for training ai
 input.txt
-profile.txt
+# model files
 model*.pkl
