@@ -4,31 +4,32 @@ from torch.nn import functional as F
 import pickle
 import json
 
-# These variables are the hyperparameters
+# These constants are the hyperparameters
 # The batch size is how many independent sequences will we process in parallel
-batch_size = 64
+BATCH_SIZE = 64
 # The maximum context length for predictions
-block_size = 128
+BLOCK_SIZE = 128
 # Maximum interations of training
-max_iters = 3000
+MAX_ITERS = 3000
 # Every 100 iterations of training, print loss and save stage
-eval_interval = 100
+EVAL_INTERVAL = 100
 # The rate of learning
-learning_rate = 3e-4
+LEARNING_RATE = 3e-4
 # I test this on my personal laptop which does not have a gpu
 #  so the cpu will be used
-device = 'cpu'
-eval_iters = 200
-n_embd = 384
+DEVICE = 'cpu'
+EVAL_ITERS = 200
+# The dimension of embedding
+N_EMBD = 384
 # The number of self-attention heads
-n_head = 6
+N_HEAD = 6
 # The number of block layers
-n_layer = 6
+N_LAYER = 6
 # This helps reduce overfitting by peridically setting some weights to zero
-dropout = 0.2
+DROPOUT = 0.2
 
 # The size of self-attention heads
-head_size = n_embd // n_head
+HEAD_SIZE = N_EMBD // N_HEAD
 
 # Open file containing output of using preprocessor
 # Note this will likely be changed in a later commit
@@ -131,14 +132,14 @@ class Head(nn.Module):
 
     def __init__(self):
         super().__init__()
-        self.keys = nn.Linear(n_embd, head_size, bias=False)
-        self.queries = nn.Linear(n_embd, head_size, bias=False)
-        self.values = nn.Linear(n_embd, head_size, bias=False)
+        self.keys = nn.Linear(N_EMBD, HEAD_SIZE, bias=False)
+        self.queries = nn.Linear(N_EMBD, HEAD_SIZE, bias=False)
+        self.values = nn.Linear(N_EMBD, HEAD_SIZE, bias=False)
         self.register_buffer(
             'tril',
-            torch.tril(torch.ones(block_size, block_size))
+            torch.tril(torch.ones(BLOCK_SIZE, BLOCK_SIZE))
         )
-        self.dropout = nn.Dropout(dropout)
+        self.dropout = nn.Dropout(DROPOUT)
 
     def forward(self, x):
         # size of input (batch, time-step, channels)
@@ -146,9 +147,9 @@ class Head(nn.Module):
         key = self.keys(x)  # (B,T,hs)
         query = self.queries(x)  # (B,T,hs)
         # compute attention scores ("affinities")
-        weight = query @ key.transpose(-2, -1) * head_size**-0.5  # (B, T, hs) @ (B, hs, T) -> (B, T, T)
+        weight = query @ key.transpose(-2, -1) * HEAD_SIZE**-0.5  # (B, T, hs) @ (B, hs, T) -> (B, T, T)
         weight = weight.masked_fill(
-            self.tril[:block_size, :block_size] == 0,
+            self.tril[:BLOCK_SIZE, :BLOCK_SIZE] == 0,
             float('-inf')
         )  # (B, T, T)
         weight = F.softmax(weight, dim=-1)  # (B, T, T)
@@ -164,10 +165,10 @@ class MultiHeadAttention(nn.Module):
 
     def __init__(self):
         super().__init__()
-        self.heads = nn.ModuleList([Head() for _ in range(n_head)])
-        self.project = nn.Linear(n_embd, n_embd)
-        self.dropout = nn.Dropout(dropout)
-        self.LayerNormal = nn.LayerNorm(n_embd)
+        self.heads = nn.ModuleList([Head() for _ in range(N_HEAD)])
+        self.project = nn.Linear(N_EMBD, N_EMBD)
+        self.dropout = nn.Dropout(DROPOUT)
+        self.LayerNormal = nn.LayerNorm(N_EMBD)
 
     def forward(self, x):
         out = self.LayerNormal(x)
@@ -180,15 +181,14 @@ class Block(nn.Module):
     """ Transformer block: communication followed by computation """
 
     def __init__(self):
-        # n_embd: embedding dimension, n_head: the number of heads we'd like
         super().__init__()
         self.SelfAttention = MultiHeadAttention()
         self.FeedFoward = nn.Sequential(
-            nn.LayerNorm(n_embd),
-            nn.Linear(n_embd, 4 * n_embd),
+            nn.LayerNorm(N_EMBD),
+            nn.Linear(N_EMBD, 4 * N_EMBD),
             nn.ReLU(),
-            nn.Linear(4 * n_embd, n_embd),
-            nn.Dropout(dropout),
+            nn.Linear(4 * N_EMBD, N_EMBD),
+            nn.Dropout(DROPOUT),
         )
 
     def forward(self, x):
@@ -203,11 +203,11 @@ class GPTLanguageModel(nn.Module):
         super().__init__()
         # each token directly reads off the logits
         #  for the next token from a lookup table
-        self.token_embedding_table = nn.Embedding(vocab_size, n_embd)
-        self.position_embedding_table = nn.Embedding(block_size, n_embd)
-        self.blocks = nn.Sequential(*[Block() for _ in range(n_layer)])
-        self.FinalLayerNormal = nn.LayerNorm(n_embd)  # final layer norm
-        self.lm_head = nn.Linear(n_embd, vocab_size)
+        self.token_embedding_table = nn.Embedding(vocab_size, N_EMBD)
+        self.position_embedding_table = nn.Embedding(BLOCK_SIZE, N_EMBD)
+        self.blocks = nn.Sequential(*[Block() for _ in range(N_LAYER)])
+        self.FinalLayerNormal = nn.LayerNorm(N_EMBD)  # final layer norm
+        self.lm_head = nn.Linear(N_EMBD, vocab_size)
 
         # better init, not covered in the original GPT video
         #  note watch newer video that explains to make a better comment
@@ -225,7 +225,7 @@ class GPTLanguageModel(nn.Module):
         # idx and targets are both (B,T) tensor of integers
         token_embed = self.token_embedding_table(idx)  # (B,T,C)
         position_embed = self.position_embedding_table(
-            torch.arange(block_size, device=device)
+            torch.arange(BLOCK_SIZE, device=DEVICE)
         )  # (T,C)
         x = token_embed + position_embed  # (B,T,C)
         x = self.blocks(x)  # (B,T,C)
@@ -236,23 +236,23 @@ class GPTLanguageModel(nn.Module):
 
     def batch(self):
         # load a small batch of the training data for inputs idx and targets
-        ix = torch.randint(len(train_data) - block_size, (batch_size,))
+        ix = torch.randint(len(train_data) - BLOCK_SIZE, (BATCH_SIZE,))
 
         # load block sized chunks into inputs idx and targets
         idx_data = []
         targets_data = []
         for i in ix:
-            idx_data.append(train_data[i: i + block_size])
-            targets_data.append(train_data[i + 1: i + block_size + 1])
+            idx_data.append(train_data[i: i + BLOCK_SIZE])
+            targets_data.append(train_data[i + 1: i + BLOCK_SIZE + 1])
         idx = torch.stack(idx_data)
-        idx.to(device)
+        idx.to(DEVICE)
         targets = torch.stack(targets_data)
-        targets.to(device)
+        targets.to(DEVICE)
 
         logits = self.forward(idx)
 
-        logits = logits.view(batch_size * block_size, vocab_size)
-        targets = targets.view(batch_size * block_size)
+        logits = logits.view(BATCH_SIZE * BLOCK_SIZE, vocab_size)
+        targets = targets.view(BATCH_SIZE * BLOCK_SIZE)
         loss = F.cross_entropy(logits, targets)
 
         return loss
@@ -260,8 +260,8 @@ class GPTLanguageModel(nn.Module):
     def generate(self, idx, max_new_tokens):
         # idx is (B, T) array of indices in the current context
         for _ in range(max_new_tokens):
-            # crop idx to the last block_size tokens
-            idx_cond = idx[:, -block_size:]
+            # crop idx to the last BLOCK_SIZE tokens
+            idx_cond = idx[:, -BLOCK_SIZE:]
             # get the predictions
             logits = self.forward(idx_cond)
             # focus only on the last time step
@@ -279,8 +279,8 @@ class GPTLanguageModel(nn.Module):
     # estimate the model's loss
     def estimate_loss(self, step, model_number):
         self.eval()
-        losses = torch.zeros(eval_iters)
-        for k in range(eval_iters):
+        losses = torch.zeros(EVAL_ITERS)
+        for k in range(EVAL_ITERS):
             losses[k] = self.batch().item()
         out = losses.mean()
         self.train()
@@ -311,16 +311,16 @@ class GPTLanguageModel(nn.Module):
         question = encode(
             f'question: "{question_string}"\nanswer: "i don\'t know'
         )
-        # when the block is not at least block_size, it will crash
+        # when the block is not at least BLOCK_SIZE, it will crash
         # add newline characters as placeholders, like the training data
-        while len(question) < block_size:
+        while len(question) < BLOCK_SIZE:
             question.insert(0, encode('\n')[0])
 
         # generate from the model
         context = torch.zeros(
             (1, len(question)),
             dtype=torch.long,
-            device='cpu'
+            device=DEVICE
         )
         for x in range(len(question)):
             context[0][x] = question[x]
@@ -336,18 +336,18 @@ def training_function():
     model_number = 0
 
     model = GPTLanguageModel()
-    model.to(device)
+    model.to(DEVICE)
 
     # print the number of parameters in the model
     model.model_information_printer()
 
     # create a PyTorch optimizer
-    optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=LEARNING_RATE)
 
-    for iter in range(max_iters):
+    for iter in range(MAX_ITERS):
 
-        # every eval_interval evaluate the loss on train and val sets
-        if iter % eval_interval == 0:
+        # every EVAL_INTERVAL evaluate the loss on train and val sets
+        if iter % EVAL_INTERVAL == 0:
             model.estimate_loss(iter, model_number)
             model_number += 1
 
@@ -358,7 +358,7 @@ def training_function():
         optimizer.step()
 
     # estimate the loss of the final model
-    model.estimate_loss(max_iters, int(max_iters/eval_interval))
+    model.estimate_loss(MAX_ITERS, int(MAX_ITERS/EVAL_INTERVAL))
 
 
 if mode == 'training':
@@ -376,9 +376,9 @@ else:
 # input question from user for only last model
 if mode != 'testing':
     # load model
-    with open(f'model{int(max_iters/eval_interval)}.pkl', 'rb') as f:
+    with open(f'model{int(MAX_ITERS/EVAL_INTERVAL)}.pkl', 'rb') as f:
         model = pickle.load(f)
-    model.to(device)
+    model.to(DEVICE)
 
     # print the number of parameters in the model
     model.model_information_printer()
@@ -394,11 +394,11 @@ else:
     questions = json.load(open('testing.json', 'r'))
 
     # loop over each model file
-    for model_index in range(0, int(max_iters/eval_interval)+1):
+    for model_index in range(0, int(MAX_ITERS/EVAL_INTERVAL)+1):
         # load model file
         with open(f'model{model_index}.pkl', 'rb') as f:
             model = pickle.load(f)
-        model.to(device)
+        model.to(DEVICE)
 
         # print the number of parameters in the model and it's index
         model.model_information_printer(model_index)
