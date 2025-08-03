@@ -249,7 +249,7 @@ class GPTLanguageModel(nn.Module):
         targets = torch.stack(targets_data)
         targets.to(device)
 
-        logits = self(idx)
+        logits = self.forward(idx)
 
         logits = logits.view(batch_size * block_size, vocab_size)
         targets = targets.view(batch_size * block_size)
@@ -263,7 +263,7 @@ class GPTLanguageModel(nn.Module):
             # crop idx to the last block_size tokens
             idx_cond = idx[:, -block_size:]
             # get the predictions
-            logits = self(idx_cond)
+            logits = self.forward(idx_cond)
             # focus only on the last time step
             logits = logits[:, -1, :]  # becomes (B, C)
             # apply softmax to get probabilities
@@ -289,7 +289,7 @@ class GPTLanguageModel(nn.Module):
 
         # save model
         with open(f'model{model_number}.pkl', 'wb') as f:
-            pickle.dump(model, f)
+            pickle.dump(self, f)
 
     def model_information_printer(self, mode_index=None):
         # get number of parameters
@@ -324,13 +324,15 @@ class GPTLanguageModel(nn.Module):
         )
         for x in range(len(question)):
             context[0][x] = question[x]
-        e = model.generate(context, max_new_tokens=25)
+        e = self.generate(context, max_new_tokens=25)
         for t in e:
             print_and_write_to_file('')
             print_and_write_to_file(decode(t.tolist()).replace('\n\n', ''))
 
 
-if mode == 'training':
+def training_function():
+    # train the model, moved into a function to free memory after finishing
+
     model_number = 0
 
     model = GPTLanguageModel()
@@ -350,13 +352,18 @@ if mode == 'training':
             model_number += 1
 
         # evaluate the loss
-        loss = model.batch()
+        model_loss = model.batch()
         optimizer.zero_grad(set_to_none=True)
-        loss.backward()
+        model_loss.backward()
         optimizer.step()
 
     # estimate the loss of the final model
     model.estimate_loss(max_iters, int(max_iters/eval_interval))
+
+
+if mode == 'training':
+    # train model
+    training_function()
 
 # ask user if they want to test the models
 mode = input('test the models (y/n): ')
