@@ -15,8 +15,7 @@ MAX_ITERS = 3000
 EVAL_INTERVAL = 100
 # The rate of learning
 LEARNING_RATE = 3e-4
-# I test this on my personal laptop which does not have a gpu
-#  so the cpu will be used
+# I test this on my personal laptop which does not have a gpu so the cpu will be used
 DEVICE = 'cpu'
 EVAL_ITERS = 200
 # The dimension of embedding
@@ -36,11 +35,13 @@ HEAD_SIZE = N_EMBD // N_HEAD
 with open('input.txt', 'r', encoding='utf-8') as f:
     text = f.read().lower()
 
+# file that records testing
 testing_file = open('testing.txt', 'w')
 
 
-# print and write to testing file
 def print_and_write_to_file(string_input):
+    """ print and write to testing file """
+
     print(string_input)
     testing_file.write(f'{string_input}\n')
 
@@ -90,8 +91,9 @@ for i, ch in enumerate(vocabulary):
     int_to_vocab[i] = ch
 
 
-# encoder: take a string, output a list of integers
 def encode(string):
+    """ encoder: take a string, output a list of integers """
+
     encoding = []
     string_index = 0
     while string_index < len(string):
@@ -113,9 +115,9 @@ def encode(string):
     return encoding
 
 
-# decoder: take a encoded list of integers representing tokens
-#  output the decoded string
 def decode(tokens):
+    """ decoder: take a encoded list of integers representing tokens output the decoded string """
+
     decoded = ''.join([int_to_vocab[token] for token in tokens])
     return decoded
 
@@ -131,6 +133,8 @@ class Head(nn.Module):
     """ one head of self-attention """
 
     def __init__(self):
+        """  """
+
         super().__init__()
         self.keys = nn.Linear(N_EMBD, HEAD_SIZE, bias=False)
         self.queries = nn.Linear(N_EMBD, HEAD_SIZE, bias=False)
@@ -142,21 +146,21 @@ class Head(nn.Module):
         self.dropout = nn.Dropout(DROPOUT)
 
     def forward(self, x):
-        # size of input (batch, time-step, channels)
-        # size of output (batch, time-step, head size)
-        key = self.keys(x)  # (B,T,hs)
-        query = self.queries(x)  # (B,T,hs)
+        """  """
+
+        key = self.keys(x)  # (1,BLOCK_SIZE,HEAD_SIZE)
+        query = self.queries(x)  # (1,BLOCK_SIZE,HEAD_SIZE)
         # compute attention scores ("affinities")
-        weight = query @ key.transpose(-2, -1) * HEAD_SIZE**-0.5  # (B, T, hs) @ (B, hs, T) -> (B, T, T)
+        weight = query @ key.transpose(-2, -1) * HEAD_SIZE**-0.5  # (1, BLOCK_SIZE, HEAD_SIZE) @ (B, HEAD_SIZE, BLOCK_SIZE) -> (1, BLOCK_SIZE, BLOCK_SIZE)
         weight = weight.masked_fill(
             self.tril[:BLOCK_SIZE, :BLOCK_SIZE] == 0,
             float('-inf')
-        )  # (B, T, T)
-        weight = F.softmax(weight, dim=-1)  # (B, T, T)
+        )  # (1, BLOCK_SIZE, BLOCK_SIZE)
+        weight = F.softmax(weight, dim=-1)  # (1, BLOCK_SIZE, BLOCK_SIZE)
         weight = self.dropout(weight)
         # perform the weighted aggregation of the values
-        value = self.values(x)  # (B,T,hs)
-        output = weight @ value  # (B, T, T) @ (B, T, hs) -> (B, T, hs)
+        value = self.values(x)  # (1,BLOCK_SIZE,HEAD_SIZE)
+        output = weight @ value  # (1, BLOCK_SIZE, BLOCK_SIZE) @ (1, BLOCK_SIZE, HEAD_SIZE) -> (1, BLOCK_SIZE, HEAD_SIZE)
         return output
 
 
@@ -164,6 +168,8 @@ class MultiHeadAttention(nn.Module):
     """ multiple heads of self-attention in parallel """
 
     def __init__(self):
+        """  """
+
         super().__init__()
         self.heads = nn.ModuleList([Head() for _ in range(N_HEAD)])
         self.project = nn.Linear(N_EMBD, N_EMBD)
@@ -171,6 +177,8 @@ class MultiHeadAttention(nn.Module):
         self.LayerNormal = nn.LayerNorm(N_EMBD)
 
     def forward(self, x):
+        """  """
+
         out = self.LayerNormal(x)
         out = torch.cat([h(out) for h in self.heads], dim=-1)
         out = self.dropout(self.project(out))
@@ -181,6 +189,8 @@ class Block(nn.Module):
     """ Transformer block: communication followed by computation """
 
     def __init__(self):
+        """  """
+
         super().__init__()
         self.SelfAttention = MultiHeadAttention()
         self.FeedFoward = nn.Sequential(
@@ -192,6 +202,8 @@ class Block(nn.Module):
         )
 
     def forward(self, x):
+        """  """
+
         x = x + self.SelfAttention(x)
         x = x + self.FeedFoward(x)
         return x
@@ -200,6 +212,8 @@ class Block(nn.Module):
 class GPTLanguageModel(nn.Module):
 
     def __init__(self):
+        """  """
+
         super().__init__()
         # each token directly reads off the logits
         #  for the next token from a lookup table
@@ -214,6 +228,8 @@ class GPTLanguageModel(nn.Module):
         self.apply(self._init_weights)
 
     def _init_weights(self, module):
+        """  """
+
         if isinstance(module, nn.Linear):
             torch.nn.init.normal_(module.weight, mean=0.0, std=0.02)
             if module.bias is not None:
@@ -222,19 +238,23 @@ class GPTLanguageModel(nn.Module):
             torch.nn.init.normal_(module.weight, mean=0.0, std=0.02)
 
     def forward(self, idx):
-        # idx and targets are both (B,T) tensor of integers
-        token_embed = self.token_embedding_table(idx)  # (B,T,C)
+        """  """
+
+        # idx and targets are both (1,BLOCK_SIZE) tensor of integers
+        token_embed = self.token_embedding_table(idx)  # (1,BLOCK_SIZE,N_EMBD)
         position_embed = self.position_embedding_table(
             torch.arange(BLOCK_SIZE, device=DEVICE)
-        )  # (T,C)
-        x = token_embed + position_embed  # (B,T,C)
-        x = self.blocks(x)  # (B,T,C)
-        x = self.FinalLayerNormal(x)  # (B,T,C)
-        logits = self.lm_head(x)  # (B,T,vocab_size)
+        )  # (BLOCK_SIZE,N_EMBD)
+        x = token_embed + position_embed  # (1,BLOCK_SIZE,N_EMBD)
+        x = self.blocks(x)  # (1,BLOCK_SIZE,N_EMBD)
+        x = self.FinalLayerNormal(x)  # (1,BLOCK_SIZE,N_EMBD)
+        logits = self.lm_head(x)  # (1,BLOCK_SIZE,vocab_size)
 
         return logits
 
     def batch(self):
+        """ get a batch of training data """
+
         # load a small batch of the training data for inputs idx and targets
         ix = torch.randint(len(train_data) - BLOCK_SIZE, (BATCH_SIZE,))
 
@@ -258,26 +278,30 @@ class GPTLanguageModel(nn.Module):
         return loss
 
     def generate(self, idx, max_new_tokens):
-        # idx is (B, T) array of indices in the current context
+        """ generate tokens after  """
+
+        # idx is initally (1, BLOCK_SIZE) array of indices in the current context
         for _ in range(max_new_tokens):
             # crop idx to the last BLOCK_SIZE tokens
             idx_cond = idx[:, -BLOCK_SIZE:]
             # get the predictions
             logits = self.forward(idx_cond)
             # focus only on the last time step
-            logits = logits[:, -1, :]  # becomes (B, C)
+            logits = logits[:, -1, :]  # becomes (1, vocab_size)
             # apply softmax to get probabilities
-            probs = F.softmax(logits, dim=-1)  # (B, C)
+            probs = F.softmax(logits, dim=-1)  # (1, vocab_size)
             # sample from the distribution
-            idx_next = torch.multinomial(probs, num_samples=1)  # (B, 1)
+            idx_next = torch.multinomial(probs, num_samples=1)  # (1, 1)
             # append sampled index to the running sequence
-            idx = torch.cat((idx, idx_next), dim=1)  # (B, T+1)
+            idx = torch.cat((idx, idx_next), dim=1)  # (1, current idx length + 1)
+
         return idx
 
     # this property improves performance for this function
     @torch.no_grad()
-    # estimate the model's loss
-    def estimate_loss(self, step, model_number):
+    def estimate_loss(self, step, model_index):
+        """ estimate the model's loss """
+
         self.eval()
         losses = torch.zeros(EVAL_ITERS)
         for k in range(EVAL_ITERS):
@@ -288,10 +312,12 @@ class GPTLanguageModel(nn.Module):
         print_and_write_to_file(f'step {step}: loss {out:.4f}')
 
         # save model
-        with open(f'model{model_number}.pkl', 'wb') as f:
+        with open(f'model{model_index}.pkl', 'wb') as f:
             pickle.dump(self, f)
 
     def model_information_printer(self, mode_index=None):
+        """ print the model's parameters and index if in testing mode """
+
         # get number of parameters
         parameter_count = 0
         for p in self.parameters():
@@ -307,6 +333,8 @@ class GPTLanguageModel(nn.Module):
         print_and_write_to_file('')
 
     def question_answerer(self, question_string):
+        """ input question and generate answer """
+
         # encode question
         question = encode(
             f'question: "{question_string}"\nanswer: "i don\'t know'
@@ -331,10 +359,12 @@ class GPTLanguageModel(nn.Module):
 
 
 def training_function():
-    # train the model, moved into a function to free memory after finishing
+    """ train the model """
 
-    model_number = 0
+    # index for stages
+    model_index = 0
 
+    # the model
     model = GPTLanguageModel()
     model.to(DEVICE)
 
@@ -348,8 +378,8 @@ def training_function():
 
         # every EVAL_INTERVAL evaluate the loss on train and val sets
         if iter % EVAL_INTERVAL == 0:
-            model.estimate_loss(iter, model_number)
-            model_number += 1
+            model.estimate_loss(iter, model_index)
+            model_index += 1
 
         # evaluate the loss
         model_loss = model.batch()
@@ -362,7 +392,7 @@ def training_function():
 
 
 if mode == 'training':
-    # train model
+    # train the model
     training_function()
 
 # ask user if they want to test the models
