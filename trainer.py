@@ -145,11 +145,11 @@ class Head(nn.Module):
         )
         self.dropout = nn.Dropout(DROPOUT)
 
-    def forward(self, x):
+    def forward(self, head_input):
         """  """
 
-        key = self.keys(x)  # (1,BLOCK_SIZE,HEAD_SIZE)
-        query = self.queries(x)  # (1,BLOCK_SIZE,HEAD_SIZE)
+        key = self.keys(head_input)  # (1,BLOCK_SIZE,HEAD_SIZE)
+        query = self.queries(head_input)  # (1,BLOCK_SIZE,HEAD_SIZE)
         # compute attention scores ("affinities")
         weight = query @ key.transpose(-2, -1) * HEAD_SIZE**-0.5  # (1, BLOCK_SIZE, HEAD_SIZE) @ (B, HEAD_SIZE, BLOCK_SIZE) -> (1, BLOCK_SIZE, BLOCK_SIZE)
         weight = weight.masked_fill(
@@ -159,7 +159,7 @@ class Head(nn.Module):
         weight = F.softmax(weight, dim=-1)  # (1, BLOCK_SIZE, BLOCK_SIZE)
         weight = self.dropout(weight)
         # perform the weighted aggregation of the values
-        value = self.values(x)  # (1,BLOCK_SIZE,HEAD_SIZE)
+        value = self.values(head_input)  # (1,BLOCK_SIZE,HEAD_SIZE)
         output = weight @ value  # (1, BLOCK_SIZE, BLOCK_SIZE) @ (1, BLOCK_SIZE, HEAD_SIZE) -> (1, BLOCK_SIZE, HEAD_SIZE)
         return output
 
@@ -176,13 +176,13 @@ class MultiHeadAttention(nn.Module):
         self.dropout = nn.Dropout(DROPOUT)
         self.LayerNormal = nn.LayerNorm(N_EMBD)
 
-    def forward(self, x):
+    def forward(self, logits):
         """  """
 
-        out = self.LayerNormal(x)
-        out = torch.cat([h(out) for h in self.heads], dim=-1)
-        out = self.dropout(self.project(out))
-        return out
+        output = self.LayerNormal(logits)
+        output = torch.cat([h(output) for h in self.heads], dim=-1)
+        output = self.dropout(self.project(output))
+        return output
 
 
 class Block(nn.Module):
@@ -201,12 +201,12 @@ class Block(nn.Module):
             nn.Dropout(DROPOUT),
         )
 
-    def forward(self, x):
+    def forward(self, logits):
         """  """
 
-        x = x + self.SelfAttention(x)
-        x = x + self.FeedFoward(x)
-        return x
+        logits = logits + self.SelfAttention(logits)
+        logits = logits + self.FeedFoward(logits)
+        return logits
 
 
 class GPTLanguageModel(nn.Module):
@@ -237,39 +237,39 @@ class GPTLanguageModel(nn.Module):
         elif isinstance(module, nn.Embedding):
             torch.nn.init.normal_(module.weight, mean=0.0, std=0.02)
 
-    def forward(self, idx):
+    def forward(self, context):
         """  """
 
-        # idx and targets are both (1,BLOCK_SIZE) tensor of integers
-        token_embed = self.token_embedding_table(idx)  # (1,BLOCK_SIZE,N_EMBD)
+        # context and targets are both (1,BLOCK_SIZE) tensor of integers
+        token_embed = self.token_embedding_table(context)  # (1,BLOCK_SIZE,N_EMBD)
         position_embed = self.position_embedding_table(
             torch.arange(BLOCK_SIZE, device=DEVICE)
         )  # (BLOCK_SIZE,N_EMBD)
-        x = token_embed + position_embed  # (1,BLOCK_SIZE,N_EMBD)
-        x = self.blocks(x)  # (1,BLOCK_SIZE,N_EMBD)
-        x = self.FinalLayerNormal(x)  # (1,BLOCK_SIZE,N_EMBD)
-        logits = self.lm_head(x)  # (1,BLOCK_SIZE,vocab_size)
+        logits = token_embed + position_embed  # (1,BLOCK_SIZE,N_EMBD)
+        logits = self.blocks(logits)  # (1,BLOCK_SIZE,N_EMBD)
+        logits = self.FinalLayerNormal(logits)  # (1,BLOCK_SIZE,N_EMBD)
+        logits = self.lm_head(logits)  # (1,BLOCK_SIZE,vocab_size)
 
         return logits
 
     def batch(self):
         """ get a batch of training data """
 
-        # load a small batch of the training data for inputs idx and targets
-        ix = torch.randint(len(train_data) - BLOCK_SIZE, (BATCH_SIZE,))
+        # load a small batch of the training data for inputs context and targets
+        training_batch = torch.randint(len(train_data) - BLOCK_SIZE, (BATCH_SIZE,))
 
-        # load block sized chunks into inputs idx and targets
-        idx_data = []
+        # load block sized chunks into inputs context and targets
+        context_data = []
         targets_data = []
-        for i in ix:
-            idx_data.append(train_data[i: i + BLOCK_SIZE])
-            targets_data.append(train_data[i + 1: i + BLOCK_SIZE + 1])
-        idx = torch.stack(idx_data)
-        idx.to(DEVICE)
+        for train_data_index in training_batch:
+            context_data.append(train_data[train_data_index: train_data_index + BLOCK_SIZE])
+            targets_data.append(train_data[train_data_index + 1: train_data_index + BLOCK_SIZE + 1])
+        context = torch.stack(context_data)
+        context.to(DEVICE)
         targets = torch.stack(targets_data)
         targets.to(DEVICE)
 
-        logits = self.forward(idx)
+        logits = self.forward(context)
 
         logits = logits.view(BATCH_SIZE * BLOCK_SIZE, vocab_size)
         targets = targets.view(BATCH_SIZE * BLOCK_SIZE)
@@ -277,25 +277,25 @@ class GPTLanguageModel(nn.Module):
 
         return loss
 
-    def generate(self, idx, max_new_tokens):
+    def generate(self, context, max_new_tokens):
         """ generate tokens after  """
 
-        # idx is initally (1, BLOCK_SIZE) array of indices in the current context
+        # context is initally (1, BLOCK_SIZE) array of indices in the current context
         for _ in range(max_new_tokens):
-            # crop idx to the last BLOCK_SIZE tokens
-            idx_cond = idx[:, -BLOCK_SIZE:]
+            # crop context to the last BLOCK_SIZE tokens
+            context_crop = context[:, -BLOCK_SIZE:]
             # get the predictions
-            logits = self.forward(idx_cond)
+            logits = self.forward(context_crop)
             # focus only on the last time step
             logits = logits[:, -1, :]  # becomes (1, vocab_size)
             # apply softmax to get probabilities
-            probs = F.softmax(logits, dim=-1)  # (1, vocab_size)
+            probabilities = F.softmax(logits, dim=-1)  # (1, vocab_size)
             # sample from the distribution
-            idx_next = torch.multinomial(probs, num_samples=1)  # (1, 1)
+            context_next_part = torch.multinomial(probabilities, num_samples=1)  # (1, 1)
             # append sampled index to the running sequence
-            idx = torch.cat((idx, idx_next), dim=1)  # (1, current idx length + 1)
+            context = torch.cat((context, context_next_part), dim=1)  # (1, current context length + 1)
 
-        return idx
+        return context
 
     # this property improves performance for this function
     @torch.no_grad()
@@ -304,8 +304,8 @@ class GPTLanguageModel(nn.Module):
 
         self.eval()
         losses = torch.zeros(EVAL_ITERS)
-        for k in range(EVAL_ITERS):
-            losses[k] = self.batch().item()
+        for looper in range(EVAL_ITERS):
+            losses[looper] = self.batch().item()
         out = losses.mean()
         self.train()
 
@@ -320,8 +320,8 @@ class GPTLanguageModel(nn.Module):
 
         # get number of parameters
         parameter_count = 0
-        for p in self.parameters():
-            parameter_count += p.numel()
+        for parameter in self.parameters():
+            parameter_count += parameter.numel()
 
         # print the number of parameters measured in millions in the model
         # and it's index
@@ -350,12 +350,26 @@ class GPTLanguageModel(nn.Module):
             dtype=torch.long,
             device=DEVICE
         )
-        for x in range(len(question)):
-            context[0][x] = question[x]
-        e = self.generate(context, max_new_tokens=25)
-        for t in e:
-            print_and_write_to_file('')
-            print_and_write_to_file(decode(t.tolist()).replace('\n\n', ''))
+        for looper in range(len(question)):
+            context[0][looper] = question[looper]
+        generated = self.generate(context, max_new_tokens=25)
+
+        # blank line between separate sets of questions and answers
+        print_and_write_to_file('')
+
+        # generated only has 1 element, this is the string with the question and answer
+        output_as_string = decode(generated[0].tolist())
+
+        # make sure there are not multiple newlines between separate sets of questions and answers
+        while output_as_string[0] == '\n':
+            output_as_string = output_as_string[1:]
+        while output_as_string[-1] == '\n':
+            output_as_string = output_as_string[:-1]
+        while '\n\n' in output_as_string:
+            output_as_string = output_as_string.replace('\n\n', '')
+
+        # print question and answer
+        print_and_write_to_file(output_as_string)
 
 
 def training_function():
@@ -374,11 +388,11 @@ def training_function():
     # create a PyTorch optimizer
     optimizer = torch.optim.AdamW(model.parameters(), lr=LEARNING_RATE)
 
-    for iter in range(MAX_ITERS):
+    for iteration in range(MAX_ITERS):
 
         # every EVAL_INTERVAL evaluate the loss on train and val sets
-        if iter % EVAL_INTERVAL == 0:
-            model.estimate_loss(iter, model_index)
+        if iteration % EVAL_INTERVAL == 0:
+            model.estimate_loss(iteration, model_index)
             model_index += 1
 
         # evaluate the loss
