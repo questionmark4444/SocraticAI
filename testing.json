@@ -1,52 +1,286 @@
 [
     "what is life?",
+    [
+        "I don't know"
+    ],
     "what is death?",
+    [
+        "I don't know"
+    ],
+    "what is meaning?",
+    [
+        "I don't know"
+    ],
     "what is existence?",
+    [
+        "I don't know"
+    ],
     "what is anything?",
+    [
+        "I don't know"
+    ],
     "what is birth?",
+    [
+        "I don't know"
+    ],
     "what is conscious?",
+    [
+        "I don't know"
+    ],
+    "what is consciousness?",
+    [
+        "I don't know"
+    ],
     "what is accountability?",
+    [
+        "I don't know"
+    ],
     "what is alternative?",
+    [
+        "I don't know"
+    ],
     "what is beauty?",
+    [
+        "I don't know"
+    ],
     "what is capablity?",
+    [
+        "I don't know"
+    ],
     "what is the meaning of life?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of life?"
+    ],
     "what is the meaning of death?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of death?"
+    ],
+    "what is the meaning of meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?"
+    ],
     "what is the meaning of existence?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of existence?"
+    ],
     "what is the meaning of anything?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of anything?"
+    ],
     "what is the meaning of birth?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of birth?"
+    ],
     "what is the meaning of conscious?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of conscious?"
+    ],
+    "what is the meaning of consciousness?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of consciousness?"
+    ],
     "what is the meaning of accountability?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of accountability?"
+    ],
     "what is the meaning of alternative?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of alternative?"
+    ],
     "what is the meaning of beauty?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of beauty?"
+    ],
     "what is the meaning of capablity?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of capablity?"
+    ],
     "does life have meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of life?"
+    ],
     "does death have meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of death?"
+    ],
+    "does meaning have meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?"
+    ],
     "does existence have meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of existence?"
+    ],
     "does anything have meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of anything?"
+    ],
     "does birth have meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of birth?"
+    ],
     "does conscious have meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of conscious?"
+    ],
+    "does consciousness have meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of consciousness?"
+    ],
     "does accountability have meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of accountability?"
+    ],
     "does alternative have meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of alternative?"
+    ],
     "does beauty have meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of beauty?"
+    ],
     "does capablity have meaning?",
+    [
+        "I don't know, could you explain the concept of meaning?",
+        "I don't know, could you explain the concept of capablity?"
+    ],
     "does life exist?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of life?"
+    ],
     "does death exist?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of death?"
+    ],
+    "does meaning exist?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of meaning?"
+    ],
     "does existence exist?",
+    [
+        "I don't know, could you explain the concept of existence?"
+    ],
     "does anything exist?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of anything?"
+    ],
     "does birth exist?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of birth?"
+    ],
     "does conscious exist?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of conscious?"
+    ],
+    "does consciousness exist?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of consciousness?"
+    ],
     "does accountability exist?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of accountability?"
+    ],
     "does alternative exist?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of alternative?"
+    ],
     "does beauty exist?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of beauty?"
+    ],
     "does capablity exist?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of capablity?"
+    ],
     "what is the existence of life?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of life?"
+    ],
     "what is the existence of death?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of death?"
+    ],
+    "what is the existence of meaning?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of meaning?"
+    ],
     "what is the existence of existence?",
+    [
+        "I don't know, could you explain the concept of existence?"
+    ],
     "what is the existence of anything?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of anything?"
+    ],
     "what is the existence of birth?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of birth?"
+    ],
     "what is the existence of conscious?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of conscious?"
+    ],
+    "what is the existence of consciousness?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of consciousness?"
+    ],
     "what is the existence of accountability?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of accountability?"
+    ],
     "what is the existence of alternative?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of alternative?"
+    ],
     "what is the existence of beauty?",
-    "what is the existence of capablity?"
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of beauty?"
+    ],
+    "what is the existence of capablity?",
+    [
+        "I don't know, could you explain the concept of existence?",
+        "I don't know, could you explain the concept of capablity?"
+    ]
 ]

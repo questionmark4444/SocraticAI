@@ -30,10 +30,9 @@ DROPOUT = 0.2
 # The size of self-attention heads
 HEAD_SIZE = N_EMBD // N_HEAD
 
-# Open file containing output of using preprocessor
-# Note this will likely be changed in a later commit
-with open('input.txt', 'r', encoding='utf-8') as f:
-    text = f.read().lower()
+# Open the files containing output of using preprocessor
+text = open('input.txt', 'r', encoding='utf-8').read().lower()
+validation = open('validation.txt', 'r', encoding='utf-8').read().lower()
 
 # file that records testing
 testing_file = open('testing.txt', 'w')
@@ -76,7 +75,7 @@ words = [
     'of'
 ]
 # each known letter, number, and special character as a token
-chars = sorted(list(set(text)))
+chars = sorted(list(set(text + validation)))
 # all tokens
 vocabulary = chars + words
 
@@ -110,7 +109,9 @@ def encode(string):
 
         # append single character token if no word was added
         if word_index == len(words):
-            encoding.append(vocab_to_int[string[string_index]])
+            # if character not part of vocabuary, skip it
+            if string[string_index] in vocab_to_int:
+                encoding.append(vocab_to_int[string[string_index]])
             string_index += 1
     return encoding
 
@@ -122,11 +123,9 @@ def decode(tokens):
     return decoded
 
 
-# Training data encoded and converted to tensor
+# Training and validation data encoded and converted to tensors
 train_data = torch.tensor(encode(text), dtype=torch.long)
-
-# delete raw input data from memory
-del text
+validation_data = torch.tensor(encode(validation), dtype=torch.long)
 
 
 class Head(nn.Module):
@@ -252,18 +251,18 @@ class GPTLanguageModel(nn.Module):
 
         return logits
 
-    def batch(self):
+    def batch(self, data):
         """ get a batch of training data """
 
-        # load a small batch of the training data for inputs context and targets
-        training_batch = torch.randint(len(train_data) - BLOCK_SIZE, (BATCH_SIZE,))
+        # load a small batch of the data for inputs context and targets
+        data_batch = torch.randint(len(data) - BLOCK_SIZE, (BATCH_SIZE,))
 
         # load block sized chunks into inputs context and targets
         context_data = []
         targets_data = []
-        for train_data_index in training_batch:
-            context_data.append(train_data[train_data_index: train_data_index + BLOCK_SIZE])
-            targets_data.append(train_data[train_data_index + 1: train_data_index + BLOCK_SIZE + 1])
+        for data_index in data_batch:
+            context_data.append(data[data_index: data_index + BLOCK_SIZE])
+            targets_data.append(data[data_index + 1: data_index + BLOCK_SIZE + 1])
         context = torch.stack(context_data)
         context.to(DEVICE)
         targets = torch.stack(targets_data)
@@ -305,11 +304,19 @@ class GPTLanguageModel(nn.Module):
         self.eval()
         losses = torch.zeros(EVAL_ITERS)
         for looper in range(EVAL_ITERS):
-            losses[looper] = self.batch().item()
-        out = losses.mean()
+            losses[looper] = self.batch(train_data).item()
+        out_train = losses.mean()
+        losses = torch.zeros(EVAL_ITERS)
+        for looper in range(EVAL_ITERS):
+            losses[looper] = self.batch(validation_data).item()
+        out_validate = losses.mean()
         self.train()
 
-        print_and_write_to_file(f'step {step}: loss {out:.4f}')
+        # print the step and losses
+        print_and_write_to_file(f'step {step}: train loss {out_train:.4f}')
+        # this is to align it with train loss during printing
+        aligment_spacing = ' ' * len(str(step))
+        print_and_write_to_file(f'  {aligment_spacing}  validate loss {out_validate:.4f}')
 
         # save model
         with open(f'model{model_index}.pkl', 'wb') as f:
@@ -396,7 +403,7 @@ def training_function():
             model_index += 1
 
         # evaluate the loss
-        model_loss = model.batch()
+        model_loss = model.batch(train_data)
         optimizer.zero_grad(set_to_none=True)
         model_loss.backward()
         optimizer.step()
@@ -448,7 +455,9 @@ else:
         model.model_information_printer(model_index)
 
         # test model with each question
-        for x in range(len(questions)):
-            model.question_answerer(questions[x])
+        looper = 0
+        while looper < int(len(questions)/2):
+            model.question_answerer(questions[looper*2])
+            looper += 1
 
         print_and_write_to_file('')
