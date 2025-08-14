@@ -46,7 +46,7 @@ def print_and_write_to_file(string_input):
 
 
 # Ask user if they want to retrain the models
-mode = input('retrain the models (y/n): ')
+mode = input('retrain the models (y/n): ').lower()
 testing_file.write(f'retrain the models (y/n): {mode}\n')
 if (mode == 'y'):
     mode = 'training'
@@ -90,6 +90,23 @@ for i, ch in enumerate(vocabulary):
     int_to_vocab[i] = ch
 
 
+def filter(string):
+    """ filter: take a string as input, output that same string
+    but without any characters that aren't in the vocabuary"""
+
+    output = ""
+    string_index = 0
+    while string_index < len(string):
+        # if character not part of vocabuary, skip it
+        if string[string_index] in chars:
+            output += string[string_index]
+        string_index += 1
+    # only 1 question mark at end
+    while output[-1] == '?':
+        output = output[:-1]
+    return output
+
+
 def encode(string):
     """ encoder: take a string, output a list of integers """
 
@@ -109,9 +126,7 @@ def encode(string):
 
         # append single character token if no word was added
         if word_index == len(words):
-            # if character not part of vocabuary, skip it
-            if string[string_index] in vocab_to_int:
-                encoding.append(vocab_to_int[string[string_index]])
+            encoding.append(vocab_to_int[string[string_index]])
             string_index += 1
     return encoding
 
@@ -343,9 +358,7 @@ class GPTLanguageModel(nn.Module):
         """ input question and generate answer """
 
         # encode question
-        question = encode(
-            f'question: "{question_string}"\nanswer: "i don\'t know'
-        )
+        question = encode(f'question: "{filter(question_string)}?"\nanswer: "i don\'t know')
         # when the block is not at least BLOCK_SIZE, it will crash
         # add newline characters as placeholders, like the training data
         while len(question) < BLOCK_SIZE:
@@ -417,7 +430,7 @@ if mode == 'training':
     training_function()
 
 # ask user if they want to test the models
-mode = input('test the models (y/n): ')
+mode = input('test the models (y/n): ').lower()
 testing_file.write(f'test the models (y/n): {mode}\n')
 if (mode == 'y'):
     mode = 'testing'
