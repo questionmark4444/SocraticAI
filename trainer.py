@@ -11,6 +11,8 @@ BATCH_SIZE = 64
 BLOCK_SIZE = 128
 # Maximum interations of training
 MAX_ITERS = 3000
+# Beginning model's amount of iterations
+BEGIN_INTERATIONS = 0
 # Every 100 iterations of training, print loss and save stage
 EVAL_INTERVAL = 100
 # The rate of learning
@@ -396,10 +398,15 @@ def training_function():
     """ train the model """
 
     # index for stages
-    model_index = 0
+    model_index = int(BEGIN_INTERATIONS/EVAL_INTERVAL)
 
-    # the model
-    model = GPTLanguageModel()
+    # create the 0th model if doesn't exist
+    if BEGIN_INTERATIONS == 0:
+        with open(f'model0.pkl', 'wb') as f:
+            pickle.dump(GPTLanguageModel(), f)
+    # load model
+    with open(f'model{int(BEGIN_INTERATIONS/EVAL_INTERVAL)}.pkl', 'rb') as f:
+        model = pickle.load(f)
     model.to(DEVICE)
 
     # print the number of parameters in the model
@@ -408,7 +415,7 @@ def training_function():
     # create a PyTorch optimizer
     optimizer = torch.optim.AdamW(model.parameters(), lr=LEARNING_RATE)
 
-    for iteration in range(MAX_ITERS):
+    for iteration in range(BEGIN_INTERATIONS, MAX_ITERS):
 
         # every EVAL_INTERVAL evaluate the loss on train and val sets
         if iteration % EVAL_INTERVAL == 0:
@@ -458,7 +465,7 @@ else:
     questions = json.load(open('testing.json', 'r'))
 
     # loop over each model file
-    for model_index in range(0, int(MAX_ITERS/EVAL_INTERVAL)+1):
+    for model_index in range(int(BEGIN_INTERATIONS/EVAL_INTERVAL), int(MAX_ITERS/EVAL_INTERVAL)+1):
         # load model file
         with open(f'model{model_index}.pkl', 'rb') as f:
             model = pickle.load(f)
